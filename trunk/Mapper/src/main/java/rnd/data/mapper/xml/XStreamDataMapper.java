@@ -1,7 +1,7 @@
 package rnd.data.mapper.xml;
 
 import rnd.data.processor.AbstractDataProcessor;
-import rnd.util.UXXStreamUtils;
+import rnd.util.XStreamUtils;
 
 import com.thoughtworks.xstream.XStream;
 
@@ -32,7 +32,7 @@ public class XStreamDataMapper<Rq, Rs> extends AbstractDataProcessor<Rq, Rs> {
 
 	public String processRequest(Rq requestPayLoad, DataProcessorCallback callback) throws Throwable {
 
-		XStream xStream = UXXStreamUtils.getXStream();
+		XStream xStream = XStreamUtils.getXStream();
 
 		if (callback != null) {
 			callback.processCallback(new XStreamDataMapperCallbackContext(xStream));
@@ -44,7 +44,7 @@ public class XStreamDataMapper<Rq, Rs> extends AbstractDataProcessor<Rq, Rs> {
 
 	public Object processResponse(Object responseXML, Rq requestPayLoad, Rs responsePayLoad, DataProcessorCallback callback) throws Throwable {
 
-		XStream xStream = UXXStreamUtils.getXStream();
+		XStream xStream = XStreamUtils.getXStream();
 
 		if (callback != null) {
 			callback.processCallback(new XStreamDataMapperCallbackContext(xStream));
