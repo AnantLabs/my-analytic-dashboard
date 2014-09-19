@@ -5,21 +5,14 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
+import rnd.data.router.AbstractDataRouter;
 import rnd.util.AppConfig;
-import rnd.util.UXJacksonUtils;
+import rnd.util.JacksonUtils;
 
-@Controller
 @SuppressWarnings("unchecked")
-public class MetaDataPublisher extends AbstractDataPublisher {
+public class MetaDataPublisher extends AbstractDataRouter {
 
-	@RequestMapping(value = "/metadata", method = RequestMethod.POST)
-	public @ResponseBody
-	String getMetaData(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+	public String getMetaData(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
 		Map requestPayLoad = parseRequest(request, Map.class);
 
@@ -29,11 +22,11 @@ public class MetaDataPublisher extends AbstractDataPublisher {
 
 		if (metaModel == null) { throw new Exception("This screen is not implemented"); }
 
-		Map<String, Object> metaModelMap = UXJacksonUtils.convertFromJSON(metaModel, Map.class);
+		Map<String, Object> metaModelMap = JacksonUtils.convertFromJSON(metaModel, Map.class);
 
 		metaModelMap.put("screenId", screenId);
 
-		metaModel = UXJacksonUtils.convertToJSON(metaModelMap);
+		metaModel = JacksonUtils.convertToJSON(metaModelMap);
 
 		return metaModel;
 	}
