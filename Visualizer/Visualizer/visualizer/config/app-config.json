@@ -1,0 +1,13 @@
+{
+	
+	"BaseURL"	: ".",
+	
+	"DefaultPersonalization" : {
+		"defaultBanner" : "Default",
+		"defaultTheme" : "",
+		"defaultFont" : "Arial",
+		"defaultGreeting" : "Welcome",
+		"defaultOptionBar" : "top"
+	}
+	
+}
