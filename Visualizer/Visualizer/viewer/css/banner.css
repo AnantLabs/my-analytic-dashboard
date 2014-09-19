@@ -1,0 +1,59 @@
+.TN_default{
+width: 108px;
+height: 52px;
+margin-top: 12px;
+padding: 0;
+border: 1px solid rgba(255, 255, 255, 1);
+border-radius: 17px 17px 2px 2px;
+opacity: 0.5;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 -23px 16px rgba(0, 0, 0, 0.12);
+}
+.TN_Landscape{
+	width: 100%;
+	background-image: url("../images/banner/TN_Landscape.png") !important;
+	display: block;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	height: 80px;
+}
+
+.TN_Beach{
+	width: 100%;
+	background-image: url("../images/banner/TN_Beach.png") !important;
+	display: block;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	height: 80px;
+}
+
+.TN_Golf{
+	width: 100%;
+	background-image: url("../images/banner/TN_Golf.png") !important;
+	display: block;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	height: 80px;
+}
+
+.TN_Tropical{
+	width: 100%;
+	background-image: url("../images/banner/TN_Tropical.png") !important;
+	display: block;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	height: 80px;
+}
+
+.TN_Mountain{
+	width: 100%;
+	background-image: url("../images/banner/TN_Mountain.png") !important;
+	display: block;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	height: 80px;
+}

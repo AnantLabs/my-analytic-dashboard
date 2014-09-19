@@ -1,0 +1,38 @@
+<div class="sidebarRight span2">
+	<div id="sidebarRight" class="well fixedHeightViewport sidebar-nav ">
+	 	<div class="accordion-group">
+	 		<div id="defaultactivities" class="scrollable">
+			<ul class="nav2 nav-stacked anchor-pointer">  		
+				<li ng-repeat = "sa in defaultActivities">
+					<a hhref ng-click="performAction(sa);" class="nav-header anchor-pointer">{{sa.name}}</a>
+				</li>
+			</ul>
+			</div>
+			<a mvc-toggle-class="imgExpand imgCollapse" data-parent="#sidebarRight" toggletarget="sideExpanderActivity" class="nav-header anchor-pointer" data-toggle="collapse" data-target="#activities">
+		<div id="sideExpanderActivity" class="imgExpand" ></div>
+ 	 		More	
+		</a>
+			<div id="activities" class="scrollable collapse">
+			<ul class="nav nav-tabs nav-stacked anchor-pointer">  		
+				<li ng-repeat = "sa in screenActivities">
+					<a hhref ng-click="performAction(sa);" class="nav-text">{{sa.name}}</a>
+				</li>
+			</ul>
+			</div>
+		</div>
+		<div class="accordion-group">
+			<a mvc-toggle-class="imgExpand imgCollapse" data-parent="#sidebarRight" toggletarget="sideExpanderAction" class="nav-header anchor-pointer" data-toggle="collapse" data-target="#screenAction">
+		<div id="sideExpanderAction" class="imgCollapse" ></div>
+ 	 		Actions	
+		</a>
+			<div id="screenAction" class="scrollable collapse in">
+			<ul class="nav nav-tabs nav-stacked">
+				
+				<li ng-repeat="action in actions">
+					<a mvc-toggle-class="imgSideBarTabClose imgSideBarTabOpen" class="nav-text anchor-pointer" toggletarget="sliderRight" ng-click="displayPage(action);" data-toggle="collapse" data-target="#menuright" >{{action.name}}</a>
+				</li>
+			</ul>
+			
+		</div>
+	</div><!--/.well -->
+</div><!--/span-->

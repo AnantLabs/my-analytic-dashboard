@@ -1,0 +1,15 @@
+<div modal="modal.maximizedGrid[field.gridId]" options="maximizedModalOpts">
+	<div class="maximized-content">
+		<div class="modal-header modal-header-row modal-header-row-grid">
+			<div class="modal-header-row">
+				<h3 class="ng-binding pull-left">{{gridTitle}}</h3>	
+				<div class="close-modal-grid">			
+				<a><img class="pull-right imgSideBarTabOpen" ng-click="closeMaximizeGridModal(field.gridId)"> </a>
+				</div>
+			</div>
+		</div>
+		<div class="modal-body maximized-modal-grid-body">
+			<div class="gridStyle maximizedGridStyle" ng-grid="gridOptions"></div>
+		</div>
+	</div>
+</div>
