@@ -1,0 +1,6 @@
+<ul class="breadcrumb">
+	<li ng-repeat='bc in breadcrumbs' ng-class="{'active': {{$last}} }"><a
+		class="anchor-pointer"
+		ng-click="unregisterBreadCrumb( $index );displayNavigationActionBC(bc.screenObj,true);" title="{{bc.label}}">{{bc.label_short}}</a><span
+		class="divider" ng-show="! $last">{{separator}}</span></li>
+</ul>

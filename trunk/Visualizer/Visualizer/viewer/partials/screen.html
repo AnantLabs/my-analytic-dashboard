@@ -1,0 +1,37 @@
+<div id="titlebar" ng-init="screenType='screen'">
+	
+	<div ng-click="toggleFontSize()" mvc-toggle-class="resizerFontUp resizerFontDown" toggletarget="divFontResizer" id="divFontResizer" class=" fontResizer resizerFontUp" ></div>
+
+	<div class="titlebar">
+		<span id="title" >{{metadata.title}}</span><div class="ico-previous pull-right anchor-pointer" title="Back" ng-click="displayParentPage(this)" ng-show="showPreviousButton"/>
+	</div>
+</div>
+	<div class="row fixedHeightViewport innerContainer">
+		<ng-include src="template.form"></ng-include>
+	</div>
+
+<div id="mvcactivitypopup" class="mvc_bubble_autocomplete" mvc-showwidget="no" >
+		<div class="mvc_EP_bubble_pointer_icon_border"></div>
+		<div class="mvc_EP_bubble_pointer_icon"></div>
+		<div id="mvcpopupHeader" class="mvc_expressprocessing_header">Activity</div>
+		<div id="mvcpopupContent">
+			<ul>
+				<li class="anchor-pointer" ng-repeat="activity in activityList"  ng-click="performActivity(this)"> <a href=""> {{activity.name}} </a></li>
+			</ul>	
+	 </div>
+</div>
+
+<div id="mvcgridactions" class="mvc_bubble_autocomplete" mvc-showwidget="no" >
+		<div class="mvc_EP_bubble_pointer_icon_border"></div>
+		<div class="mvc_EP_bubble_pointer_icon"></div>
+		<div id="mvcpopupHeader" class="mvc_expressprocessing_header">Actions</div>
+		<div id="mvcpopupContent">
+			<ul>
+				<li class="anchor-pointer" ng-repeat="activity in gridactions"  ng-click="callGridAction('{{rowActionfunction}}', this)"> <a href=""> {{activity.name}} </a></li>
+			</ul>	
+	 </div>
+</div>
+
+<div id="modalScreen" ng-controller='ScreenCtrl' ng-init="screenType='modal_screen'">
+	<ng-include  src="template.modalScreen" ></ng-include>
+</div>

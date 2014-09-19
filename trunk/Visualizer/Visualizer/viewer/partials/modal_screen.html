@@ -1,0 +1,13 @@
+<div modal="modal.screen" close="closeModal('screen')" options="opts">
+    <div class="modal-header">
+		<div class="subheader">
+			<span>{{metadata.title}}</span>
+		</div>
+	</div>
+    <div class="modal-body" >
+		<ng-include src="template.modalform"></ng-include>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="closeModal('screen')">Close</button>
+    </div>
+</div>
