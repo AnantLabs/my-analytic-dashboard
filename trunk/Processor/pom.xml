@@ -4,8 +4,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>analytics</groupId>
-	<name>DataMapper</name>
-	<packaging>war</packaging>
+	<name>Processor</name>
 	<version>1.0.0</version>
 
 	<properties>
@@ -114,5 +113,5 @@
 		</plugins>
 
 	</build>
-	<artifactId>DataMapper</artifactId>
+	<artifactId>Processor</artifactId>
 </project>
