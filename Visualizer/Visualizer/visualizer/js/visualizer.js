@@ -9,18 +9,15 @@
 var app = angular.module('visualizer', ['ngRoute','ui.sortable','ngResource','ngSanitize','ngGrid','ui','ui.bootstrap','angular-carousel','ngTouch']).
     config([ '$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {
     	
-    	$locationProvider.html5Mode(true);
+//    	$locationProvider.html5Mode(true);
     	
       	$routeProvider.
       	
-      	when('/login', {templateUrl: 'viewer/partials/login.html', controller: LoginCtrl}).
-
-      	when('/screen/:screenId/:action', {templateUrl: 'viewer/partials/screen.html', controller: ScreenCtrl}).
-        when('/screen/:screenId/:action/:typeActivity', {templateUrl: 'viewer/partials/nav_screen.html', controller: ScreenCtrl}).
-        
         when('/home', {templateUrl: 'visualizer/partials/home.html', controller: HomeCtrl}).
         
-        otherwise({redirectTo: '/home'});
+        when('/dashboard', {templateUrl: 'visualizer/partials/dashboard.html', controller: DashboardCtrl}).
+        
+        otherwise({redirectTo: '/dashboard'});
       	
 		$httpProvider.interceptors.push(function($q, $rootScope, $location) {
 
@@ -74,8 +71,8 @@ var app = angular.module('visualizer', ['ngRoute','ui.sortable','ngResource','ng
 
 app.run(function($rootScope, $http, $location, $resource) {
 	
-	$resource('app/config/template-config.json').get(function(data){
-		$rootScope.template ={};
+	$rootScope.template = {};
+	$resource('visualizer/config/template-config.json').get(function(data){
 		angular.forEach(data, function(value, key) {
 			$rootScope.template[key]=value;
         });
@@ -86,7 +83,7 @@ app.run(function($rootScope, $http, $location, $resource) {
 		delete $rootScope.error;
 	});
 	
-	$resource('app/config/app-config.json').get(function(data){	
+	$resource('visualizer/config/app-config.json').get(function(data){	
 		$rootScope.appConfig = data;
 	});
 	
@@ -96,17 +93,11 @@ app.run(function($rootScope, $http, $location, $resource) {
 	};
 	
 	$rootScope.logout = function() {
+		
 		delete $rootScope.user;
 		delete localStorage.username;
 		delete $http.defaults.headers.common['Authentication'];
 		delete localStorage.Authentication;
-		$rootScope.staticInfo = {};
-		$rootScope.userPersonalBanner=$rootScope.appConfig.DefaultPersonalization.defaultBanner;
-		$rootScope.userPersonalFont="";
-		$rootScope.updateTheme($rootScope.appConfig.DefaultPersonalization.defaultTheme);
-		$rootScope.updateOptionBarPosition($rootScope.appConfig.DefaultPersonalization.defaultOptionBar);
-		
-		resetFlag($rootScope.modal);
 		
 		$location.path("/login");
 	};
@@ -155,14 +146,4 @@ app.run(function($rootScope, $http, $location, $resource) {
     $rootScope.staticData = {};
     $rootScope.headerData = {};
     
-    personalization($rootScope);
-    
-    window.ngGrid.i18n['en'].ngPageSizeLabel = 'Displayed Rows:'; 
-   
 });
-
-function safeApply($rootScope,isApply){
-	if($rootScope.$$phase && isApply==true) {
-		$rootScope.$apply();
-	}
-}
