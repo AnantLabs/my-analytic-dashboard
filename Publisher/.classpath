@@ -13,7 +13,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/Processor"/>
-	<classpathentry including="**/*.java" kind="src" path="resources"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Router"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
