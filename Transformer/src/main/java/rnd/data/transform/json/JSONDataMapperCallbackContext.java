@@ -1,6 +1,6 @@
-package rnd.data.mapper.json;
+package rnd.data.transform.json;
 
-import rnd.data.processor.DataProcessor.DataProcessorCallback.DataProcessorCallbackContext;
+import rnd.data.process.DataProcessor.DataProcessorCallback.DataProcessorCallbackContext;
 
 public interface JSONDataMapperCallbackContext extends DataProcessorCallbackContext {
 }

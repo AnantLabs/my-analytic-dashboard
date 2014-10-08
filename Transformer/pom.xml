@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>analytics</groupId>
-	<name>Mapper</name>
+	<groupId>rnd.tool.data.etl</groupId>
+	<name>Transformer</name>
 	<version>1.0.0</version>
 
 	<properties>
@@ -12,15 +12,6 @@
 
 	</properties>
 
-	<dependencies>
-
-		<dependency>
-			<groupId>analytics</groupId>
-			<artifactId>Processor</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-		
-	</dependencies>
 
 	<build>
 
@@ -60,5 +51,12 @@
 		</plugins>
 
 	</build>
-	<artifactId>Mapper</artifactId>
+	<artifactId>Transformer</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>rnd.tool.data</groupId>
+			<artifactId>Processor</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
 </project>

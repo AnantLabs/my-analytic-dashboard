@@ -1,4 +1,4 @@
-package rnd.data.mapper.jdbc;
+package rnd.data.transform.jdbc;
 
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package rnd.data.mapper.jdbc;
+package rnd.data.transform.jdbc;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
-package rnd.data.mapper.xml;
+package rnd.data.transform.xml;
 
-import rnd.data.processor.DataProcessor.DataProcessorCallback.DataProcessorCallbackContext;
+import rnd.data.process.DataProcessor.DataProcessorCallback.DataProcessorCallbackContext;
 
 public interface XMLDataMapperCallbackContext extends DataProcessorCallbackContext {
 
