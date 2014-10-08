@@ -1,10 +1,10 @@
-package rnd.data.mapper.jdbc;
+package rnd.data.transform.jdbc;
 
 import java.util.List;
 import java.util.Map;
 
-import rnd.data.mapper.jdbc.JDBCInfo.Type;
-import rnd.data.processor.AbstractDataProcessor;
+import rnd.data.process.AbstractDataProcessor;
+import rnd.data.transform.jdbc.JDBCInfo.Type;
 import rnd.util.StringUtils;
 
 @SuppressWarnings("unchecked")

@@ -1,9 +1,9 @@
-package rnd.data.mapper.json;
+package rnd.data.transform.json;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
-import rnd.data.processor.AbstractDataProcessor;
-import rnd.data.processor.DataProcessor;
+import rnd.data.process.AbstractDataProcessor;
+import rnd.data.process.DataProcessor;
 
 public class JacksonDataMapper<Rq, Rs> extends AbstractDataProcessor<Rq, Rs> implements DataProcessor<Rq, Rs> {
 

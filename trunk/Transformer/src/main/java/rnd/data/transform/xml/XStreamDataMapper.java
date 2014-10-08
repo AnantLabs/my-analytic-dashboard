@@ -1,6 +1,6 @@
-package rnd.data.mapper.xml;
+package rnd.data.transform.xml;
 
-import rnd.data.processor.AbstractDataProcessor;
+import rnd.data.process.AbstractDataProcessor;
 import rnd.util.XStreamUtils;
 
 import com.thoughtworks.xstream.XStream;

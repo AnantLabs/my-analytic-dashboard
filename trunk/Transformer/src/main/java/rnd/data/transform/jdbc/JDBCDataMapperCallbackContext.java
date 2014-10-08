@@ -1,6 +1,6 @@
-package rnd.data.mapper.jdbc;
+package rnd.data.transform.jdbc;
 
-import rnd.data.processor.DataProcessor.DataProcessorCallback.DataProcessorCallbackContext;
+import rnd.data.process.DataProcessor.DataProcessorCallback.DataProcessorCallbackContext;
 
 public class JDBCDataMapperCallbackContext implements DataProcessorCallbackContext {
 
