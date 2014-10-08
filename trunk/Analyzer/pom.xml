@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>analytics</groupId>
+	<groupId>rnd.tool.data.analytic</groupId>
 	<name>Analyzer</name>
 	<version>1.0.0</version>
 
@@ -14,7 +14,7 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>analytics</groupId>
+			<groupId>rnd.tool.data</groupId>
 			<artifactId>Processor</artifactId>
 			<version>1.0.0</version>
 		</dependency>
