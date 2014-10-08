@@ -1,4 +1,4 @@
-package rnd.data.processor;
+package rnd.data.process;
 
 import java.util.HashMap;
 import java.util.Map;

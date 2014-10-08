@@ -1,4 +1,4 @@
-package rnd.data.processor;
+package rnd.data.process;
 
 public interface DataProcessor<Rq, Rs> {
 
