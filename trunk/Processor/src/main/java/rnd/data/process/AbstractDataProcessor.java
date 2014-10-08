@@ -1,6 +1,5 @@
-package rnd.data.processor;
+package rnd.data.process;
 
-@SuppressWarnings("rawtypes")
 public abstract class AbstractDataProcessor<Rq, Rs> implements DataProcessor<Rq, Rs> {
 
 	private DataProcessor delegate;
