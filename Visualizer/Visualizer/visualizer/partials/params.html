@@ -1,0 +1,27 @@
+<form id=params>
+
+	<h5>Vendor:</h5>
+	<select id="vendor" ng-model="params.vendor" ng-change="fetchData(params)">
+		<option></option>
+		<option>Brijesh</option>
+		<option>Dinesh</option>
+		<option>Rajiv</option>
+		<option>Sameer</option>
+	</select>
+
+	<h5>Total Sales By:</h5>
+	<select id="by" ng-model="params.by" ng-change="fetchData(params)">
+		<option></option>
+		<option>Customer</option>
+		<option>Product</option>
+	</select>
+
+	<h5>Type:</h5>
+	<select id="type" ng-model="params.type" ng-change="drawChart(params)">
+		<option></option>
+		<option>Bar</option>
+		<option>Histogram</option>
+		<option>Pie</option>
+	</select>
+
+</form>

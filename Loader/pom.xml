@@ -3,15 +3,22 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>rnd.tool.data.etl</groupId>
+	<groupId>rnd.data.etl</groupId>
+	<artifactId>Loader</artifactId>
 	<name>Loader</name>
 	<version>1.0.0</version>
 
 	<properties>
 		<java-version>1.6</java-version>
-
 	</properties>
 
+	<dependencies>
+		<dependency>
+			<groupId>rnd.data</groupId>
+			<artifactId>Processor</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 
@@ -51,12 +58,4 @@
 		</plugins>
 
 	</build>
-	<artifactId>Loader</artifactId>
-	<dependencies>
-		<dependency>
-			<groupId>rnd.tool.data</groupId>
-			<artifactId>Processor</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-	</dependencies>
 </project>

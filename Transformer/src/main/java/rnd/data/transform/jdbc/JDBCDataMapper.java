@@ -35,7 +35,9 @@ public class JDBCDataMapper extends AbstractDataProcessor<JDBCInfo, JDBCResponse
 		int startIndex = 0;
 		int endIndex = sqlStmt.indexOf('@');
 
-		if (endIndex == -1) { return sqlStmt; }
+		if (endIndex == -1) {
+			return sqlStmt;
+		}
 
 		StringBuilder sqlStmtBuilder = new StringBuilder();
 

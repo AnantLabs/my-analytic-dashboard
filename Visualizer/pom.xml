@@ -3,6 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
+	<groupId>rnd.data.analytic</groupId>
 	<artifactId>Visualizer</artifactId>
 	<name>Visualizer</name>
 	<packaging>war</packaging>
@@ -11,7 +12,6 @@
 	<build>
 
 		<plugins>
-
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<version>2.9</version>
@@ -20,9 +20,8 @@
 					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
-
 		</plugins>
 
 	</build>
-	<groupId>rnd.tool.data.analytic</groupId>
+
 </project>

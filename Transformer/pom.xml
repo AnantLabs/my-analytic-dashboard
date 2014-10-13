@@ -3,20 +3,26 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>rnd.tool.data.etl</groupId>
+	<groupId>rnd.data.etl</groupId>
+	<artifactId>Transformer</artifactId>
 	<name>Transformer</name>
 	<version>1.0.0</version>
 
+	<dependencies>
+		<dependency>
+			<groupId>rnd.data</groupId>
+			<artifactId>Processor</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
+
 	<properties>
 		<java-version>1.6</java-version>
-
 	</properties>
 
 
 	<build>
-
 		<plugins>
-
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<version>2.9</version>
@@ -51,12 +57,4 @@
 		</plugins>
 
 	</build>
-	<artifactId>Transformer</artifactId>
-	<dependencies>
-		<dependency>
-			<groupId>rnd.tool.data</groupId>
-			<artifactId>Processor</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-	</dependencies>
 </project>

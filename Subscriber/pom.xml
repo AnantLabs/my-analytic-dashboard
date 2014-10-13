@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>rnd.tool.data.analytic</groupId>
+	<groupId>rnd.data</groupId>
 	<artifactId>Subscriber</artifactId>
 	<name>Subscriber</name>
 	<packaging>war</packaging>
@@ -29,25 +29,25 @@
 		</dependency>
 
 		<dependency>
-			<groupId>rnd.tool.data</groupId>
+			<groupId>rnd.data</groupId>
 			<artifactId>Router</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
-			<groupId>rnd.tool.data.etl</groupId>
+			<groupId>rnd.data.etl</groupId>
 			<artifactId>Extractor</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
-			<groupId>rnd.tool.data.etl</groupId>
+			<groupId>rnd.data.etl</groupId>
 			<artifactId>Loader</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
-			<groupId>rnd.tool.data.etl</groupId>
+			<groupId>rnd.data.etl</groupId>
 			<artifactId>Transformer</artifactId>
 			<version>1.0.0</version>
 		</dependency>

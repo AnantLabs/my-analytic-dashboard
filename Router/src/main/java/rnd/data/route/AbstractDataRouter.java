@@ -11,23 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import rnd.data.process.DataProcessor;
 import rnd.data.process.DataProcessorFactory;
-import rnd.integration.IntegrationService;
 import rnd.util.IOUtils;
 import rnd.util.JacksonUtils;
 
-public abstract class AbstractDataRouter {
-
-	@Autowired
-	private static IntegrationService integrationService;
+public abstract class AbstractDataRouter implements DataRouter {
 
 	@Autowired
 	private static DataProcessorFactory dataProcessorFactory;
 
-	public static IntegrationService getIntegrationService() {
-		return integrationService;
-	}
-
-	protected static DataProcessorFactory getDataProcessorFactory() {
+	public DataProcessorFactory getDataProcessorFactory() {
 		return dataProcessorFactory;
 	}
 
@@ -46,29 +38,22 @@ public abstract class AbstractDataRouter {
 
 		String defaultMessage = exception.getMessage();
 		exceptionMap.put("message", defaultMessage);
+		byte[] response = ("{\"exception\" : " + JacksonUtils.convertToJSON(exceptionMap) + "}").getBytes();
 
 		httpServletResponse.setContentType("application/json");
-		httpServletResponse.getOutputStream().write(("{\"exception\" : " + JacksonUtils.convertToJSON(exceptionMap) + "}").getBytes());
+		httpServletResponse.getOutputStream().write(response);
 	}
 
-	protected static Object sendDataRequest(String requestType, String resource, Object requestPayLoad, Object responsePayLoad) throws Throwable {
-
-		DataProcessor dataProcessor = getDataProcessorFactory().getDataProcessor(requestType);
-		Object requestData = dataProcessor.processRequest(requestPayLoad, null);
-
-		String responseData = getIntegrationService().send("direct:" + resource, null, requestData, String.class).replace((char) 0, ' ');
-
-		Object responsePayLoadObj = dataProcessor.processResponse(responseData, requestPayLoad, responsePayLoad, null);
-		return responsePayLoadObj;
+	public Object sendDataRequest(String resource, Object requestPayLoad) throws Throwable {
+		DataProcessor dataProcessor = getDataProcessorFactory().getDataProcessor(resource);
+		Object responseData = dataProcessor.processRequest(requestPayLoad, null);
+		return responseData;
 	}
 
-	protected static Object recieveDataResponse(String requestType, String resource, Object requestPayLoad, Object responsePayLoad) throws Throwable {
-
-		String responseData = getIntegrationService().receive("direct:" + resource, String.class);
-
-		DataProcessor dataProcessor = getDataProcessorFactory().getDataProcessor(requestType);
-		Object responsePayLoadObj = dataProcessor.processResponse(responseData, requestPayLoad, responsePayLoad, null);
-		return responsePayLoadObj;
+	public Object receiveDataResponse(String resource, Object requestPayLoad, Object responsePayLoad) throws Throwable {
+		DataProcessor dataProcessor = getDataProcessorFactory().getDataProcessor(resource);
+		Object responseData = dataProcessor.processResponse(null, requestPayLoad, responsePayLoad, null);
+		return responseData;
 	}
 
 	protected static Map parseRequest(HttpServletRequest request) throws IOException, Throwable {
@@ -81,33 +66,20 @@ public abstract class AbstractDataRouter {
 		return payLoad;
 	}
 
-	protected static Object processRequest(Object requestData, String requestType, String resource, HttpServletResponse response, Object responsePayload) throws IOException, Throwable {
-
-		Object responseData = sendDataRequest(requestType, resource, requestData, responsePayload);
-
-		if (responseData instanceof String) {
-			String responseJSON = (String) responseData;
-			if (responseJSON.contains("{\"exception\":")) {
-				response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-			}
-			return responseJSON;
-		} else {
-			return responseData;
-		}
-
-	}
-
-	// protected List<Map<String, String>> executeStmt(Type type, String query) throws Throwable {
+	// protected List<Map<String, String>> executeStmt(Type type, String query)
+	// throws Throwable {
 	// return executeStmt(type, query, new HashMap());
 	// }
 	//
-	// protected List<Map<String, String>> executeStmt(Type type, String query, Map payLoad) throws Throwable {
+	// protected List<Map<String, String>> executeStmt(Type type, String query,
+	// Map payLoad) throws Throwable {
 	//
 	// JDBCInfo jdbcInfo = new JDBCInfo();
 	// jdbcInfo.setType(type);
 	// jdbcInfo.setStmt(query);
 	// jdbcInfo.setPayLoad(payLoad);
-	// JDBCResponsePayLoad result = (JDBCResponsePayLoad) sendDataRequest("JDBC", "service", jdbcInfo, new JDBCResponsePayLoad());
+	// JDBCResponsePayLoad result = (JDBCResponsePayLoad)
+	// sendDataRequest("JDBC", "service", jdbcInfo, new JDBCResponsePayLoad());
 	//
 	// List<Map<String, String>> rows = result.getRows();
 	// return rows;

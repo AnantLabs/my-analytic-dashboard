@@ -13,7 +13,9 @@ public class IOUtils {
 		if (is == null) {
 			is = IOUtils.class.getClassLoader().getResourceAsStream(fileName);
 		}
-		if (is == null) { throw new FileNotFoundException(fileName); }
+		if (is == null) {
+			throw new FileNotFoundException(fileName);
+		}
 		return is;
 	}
 
