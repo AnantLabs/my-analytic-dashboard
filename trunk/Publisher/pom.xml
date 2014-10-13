@@ -3,10 +3,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>rnd.tool.data.analytic</groupId>
+	<groupId>rnd.data</groupId>
 	<artifactId>Publisher</artifactId>
 	<name>Publisher</name>
 	<version>1.0.0</version>
+	<packaging>war</packaging>
 
 	<properties>
 		<java-version>1.6</java-version>
@@ -15,31 +16,34 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
-			<scope>provided</scope>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>3.1.2.RELEASE</version>
 		</dependency>
 
 		<dependency>
-			<groupId>rnd.tool.data</groupId>
+			<groupId>rnd.data</groupId>
 			<artifactId>Router</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
-			<groupId>rnd.tool.data.analytic</groupId>
+			<groupId>rnd.data</groupId>
+			<artifactId>Fetcher</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>rnd.data.analytic</groupId>
 			<artifactId>Analyzer</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 
-		
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>3.1.2.RELEASE</version>
+			<groupId>rnd.data.etl</groupId>
+			<artifactId>Extractor</artifactId>
+			<version>1.0.0</version>
 		</dependency>
-		
 	</dependencies>
 
 	<build>
@@ -71,5 +75,4 @@
 		</plugins>
 
 	</build>
-	<packaging>war</packaging>
 </project>

@@ -3,14 +3,20 @@
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
 		<wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <dependent-module archiveName="Router-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Router/Router">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="Processor-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Processor/Processor">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="Fetcher-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Fetcher/Fetcher">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="Analyzer-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Analyzer/Analyzer">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Extractor-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Extractor/Extractor">
             <dependency-type>uses</dependency-type>
         </dependent-module>
 		<property name="java-output-path" value="target/classes"/>

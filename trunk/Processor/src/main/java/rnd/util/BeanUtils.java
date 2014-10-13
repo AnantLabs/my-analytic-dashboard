@@ -10,13 +10,11 @@ public class BeanUtils {
 			propertyName = capitialize(propertyName);
 			try {
 				m = bean.getClass().getMethod("get" + propertyName, (Class[]) null);
-			}
-			catch (NoSuchMethodException e) {
+			} catch (NoSuchMethodException e) {
 				m = bean.getClass().getMethod("is" + propertyName, (Class[]) null);
 			}
 			return m.invoke(bean, (Object[]) null);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
@@ -26,8 +24,7 @@ public class BeanUtils {
 			String methodName = "set" + capitialize(propertyName);
 			Method m = bean.getClass().getMethod(methodName, bean.getClass().getField(propertyName).getType());
 			return m.invoke(bean, value);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}

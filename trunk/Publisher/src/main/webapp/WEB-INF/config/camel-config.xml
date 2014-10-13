@@ -6,9 +6,25 @@
 	xsi:schemaLocation="
        http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/util
-       http://www.springframework.org/schema/util/spring-util.xsd">
+       http://camel.apache.org/schema/spring
+       http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-		
+	<!-- Camel Context -->
+
+	<camel:camelContext id="camelContext" streamCache="true">
+
+		<camel:template id="camelTemplate" />
+		<camel:consumerTemplate id="camelConsumerTemplate" />
+<!-- 
+		<camel:endpoint id="dataEndPoint" uri="${DataEndPointURI}" />
+
+		<camel:route id="data">
+
+			<camel:from uri="direct:data" />
+			<camel:to ref="dataEndPoint" />
+
+		</camel:route>
+-->
+	</camel:camelContext>
 
 </beans>
