@@ -2,6 +2,7 @@ package rnd.service.rest.web;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,11 +24,20 @@ public class APIProvider extends HttpServlet {
 		String resource = requestURI.substring(requestURI.lastIndexOf('/') + 1);
 		DataRouter dataRouter = APIRegistery.getAPIProvider("1.0", resource, APIMethod.GET);
 
+		Map payload = new HashMap();
+		payload.put("key", "MAT_DESC");
+		payload.put("value", "QTY");
+		
 		try {
-			Object data = dataRouter.sendDataRequest(resource, new HashMap());
+
+			Map data = (Map) dataRouter.sendDataRequest(resource, payload);
+			payload.put("keys", data.keySet());
+			payload.put("values", data.values());
+			
 			response.setContentType("application/json");
-			response.getOutputStream().write(JacksonUtils.convertToJSON(data).getBytes());
+			response.getOutputStream().write(JacksonUtils.convertToJSON(payload).getBytes());
 			response.getOutputStream().flush();
+		
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}

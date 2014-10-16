@@ -42,7 +42,8 @@ public abstract class AbstractDataRouter implements DataRouter {
 
 	public Object sendDataRequest(String resource, Object requestPayLoad) throws Throwable {
 		DataProcessor dataProcessor = getDataProcessorFactory().getDataProcessor(resource);
-		Object responseData = dataProcessor.processRequest(null, null);
+		Object responseData = dataProcessor.processRequest(requestPayLoad, null);
+		responseData = dataProcessor.processResponse(responseData, requestPayLoad, new HashMap(), null);
 		return responseData;
 	}
 
