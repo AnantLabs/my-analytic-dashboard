@@ -27,7 +27,7 @@ public class ExcelExtractor extends AbstractDataProcessor {
 		Map responseData = new HashMap();
 		
 		List columnNames = extractColumnNames(sheet.getRow(0));
-		responseData.put("header", columnNames);
+		responseData.put("keys", columnNames);
 
 		List data = new ArrayList();
 		
@@ -35,7 +35,7 @@ public class ExcelExtractor extends AbstractDataProcessor {
 			List columnValues = extractColumnValues(sheet.getRow(i));
 			data.add(columnValues);
 		}
-		responseData.put("data", data);
+		responseData.put("values", data);
 
 		return responseData;
 	}

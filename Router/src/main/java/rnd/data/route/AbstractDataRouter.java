@@ -7,20 +7,16 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import rnd.data.process.DataProcessor;
 import rnd.data.process.DataProcessorFactory;
+import rnd.util.ApplicationContextProvider;
 import rnd.util.IOUtils;
 import rnd.util.JacksonUtils;
 
 public abstract class AbstractDataRouter implements DataRouter {
 
-	@Autowired
-	private static DataProcessorFactory dataProcessorFactory;
-
 	public DataProcessorFactory getDataProcessorFactory() {
-		return dataProcessorFactory;
+		return ApplicationContextProvider.get().getBean(DataProcessorFactory.class);
 	}
 
 	public static void handleException(Throwable exception, HttpServletResponse httpServletResponse) throws Throwable {
@@ -46,7 +42,7 @@ public abstract class AbstractDataRouter implements DataRouter {
 
 	public Object sendDataRequest(String resource, Object requestPayLoad) throws Throwable {
 		DataProcessor dataProcessor = getDataProcessorFactory().getDataProcessor(resource);
-		Object responseData = dataProcessor.processRequest(requestPayLoad, null);
+		Object responseData = dataProcessor.processRequest(null, null);
 		return responseData;
 	}
 

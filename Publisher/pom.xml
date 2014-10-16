@@ -21,15 +21,11 @@
 			<version>3.1.2.RELEASE</version>
 		</dependency>
 
-		<dependency>
-			<groupId>rnd.data</groupId>
-			<artifactId>Router</artifactId>
-			<version>1.0.0</version>
-		</dependency>
+
 
 		<dependency>
-			<groupId>rnd.data</groupId>
-			<artifactId>Fetcher</artifactId>
+			<groupId>rnd.data.etl</groupId>
+			<artifactId>Extractor</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 
@@ -40,8 +36,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>rnd.data.etl</groupId>
-			<artifactId>Extractor</artifactId>
+			<groupId>rnd.data</groupId>
+			<artifactId>Router</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
@@ -71,8 +67,7 @@
 					<showDeprecation>true</showDeprecation>
 				</configuration>
 			</plugin>
-
 		</plugins>
-
 	</build>
+
 </project>

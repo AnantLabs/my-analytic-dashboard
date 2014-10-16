@@ -1,7 +1,7 @@
 package rnd.service.rest;
 
-import rnd.ApplicationContextProvider;
 import rnd.data.route.DataRouter;
+import rnd.util.ApplicationContextProvider;
 
 public class APIRegistery {
 

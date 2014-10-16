@@ -10,9 +10,16 @@
 
 	<properties>
 		<java-version>1.6</java-version>
+		<org.apache.camel-version>2.12.2</org.apache.camel-version>
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>rnd.data</groupId>
+			<artifactId>Processor</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -21,9 +28,21 @@
 		</dependency>
 
 		<dependency>
-			<groupId>rnd.data</groupId>
-			<artifactId>Processor</artifactId>
-			<version>1.0.0</version>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-http</artifactId>
+			<version>${org.apache.camel-version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>geronimo-servlet_2.5_spec</artifactId>
+					<groupId>org.apache.geronimo.specs</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-ftp</artifactId>
+			<version>${org.apache.camel-version}</version>
 		</dependency>
 
 	</dependencies>
