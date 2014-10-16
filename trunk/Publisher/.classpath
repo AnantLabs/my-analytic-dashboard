@@ -10,7 +10,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Processor"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Router"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Analyzer"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Fetcher"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>

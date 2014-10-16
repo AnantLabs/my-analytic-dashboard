@@ -2,9 +2,9 @@ package rnd.data.process;
 
 public interface DataProcessor<Rq, Rs> {
 
-	public interface DataProcessorCallback {
+	public static interface DataProcessorCallback {
 
-		public interface DataProcessorCallbackContext {
+		public static interface DataProcessorCallbackContext {
 		}
 
 		void processCallback(DataProcessorCallbackContext context);

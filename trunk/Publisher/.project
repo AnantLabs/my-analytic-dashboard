@@ -3,6 +3,10 @@
 	<name>Publisher</name>
 	<comment></comment>
 	<projects>
+		<project>Analyzer</project>
+		<project>Extractor</project>
+		<project>Processor</project>
+		<project>Router</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

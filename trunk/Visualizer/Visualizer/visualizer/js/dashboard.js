@@ -23,7 +23,7 @@ function DashboardCtrl($scope, $resource) {
 
 	$scope.fetchData = function(params) {
 
-		$resource('/Publisher/api/data').get(//
+		$resource('/Publisher/api/data/sales').get(//
 		// success
 		function(response) {
 			$scope.d3data = d3.selectAll("rect").data(response).enter();
@@ -53,7 +53,7 @@ function DashboardCtrl($scope, $resource) {
 			return 20;
 		});
 
-		// Histogram
+		// Column
 		// append("rect").//
 		// attr("x", function(d, i) {
 		// return i * 25;
@@ -70,19 +70,9 @@ function DashboardCtrl($scope, $resource) {
 
 		// Pie
 
-		// bar.append("text").//
-		// attr("dy", ".75em").//
-		// attr("y", 6).//
-		// attr("x", x(data[0].dx) / 2).//
-		// attr("text-anchor", "middle").//
-		// text(function(d) {
-		// return formatCount(d.y);
-		// });
-
-		// svg.append("g").//
-		// attr("class", "x axis").//
-		// attr("transform", "translate(0," + height + ")").//
-		// call(xAxis);
+		// Line
+		
+		// Area
 
 	};
 

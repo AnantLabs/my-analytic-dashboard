@@ -1,4 +1,4 @@
-package rnd;
+package rnd.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

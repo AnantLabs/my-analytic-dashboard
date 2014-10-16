@@ -3,7 +3,7 @@
   
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/web-application-context.xml</param-value>
+    <param-value>/WEB-INF/classes/web-application-context.xml</param-value>
   </context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
