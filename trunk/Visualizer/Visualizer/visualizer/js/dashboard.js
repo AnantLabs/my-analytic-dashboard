@@ -26,7 +26,8 @@ function DashboardCtrl($scope, $resource) {
 		$resource('/Publisher/api/data/sales').get(//
 		// success
 		function(response) {
-			$scope.d3data = d3.selectAll("rect").data(response).enter();
+			$scope.keys = response.keys;
+			d3.selectAll("rect").data(response.values).enter().append("rect");
 			alert('Data Fetched');
 		},//
 		// error
@@ -38,20 +39,16 @@ function DashboardCtrl($scope, $resource) {
 
 	$scope.drawChart = function(params) {
 
-		$scope.d3data.//
+		d3.selectAll("rect").//
 
 		// Bar
-		append("rect").//
-		// attr("x", 1).//
 		attr("y", function(d, i) {
 			return i * 25;
 		}).//
 		attr("width", function(d, i) {
-			return d * 1000;
+			return d;
 		}).//
-		attr("height", function(d, i) {
-			return 20;
-		});
+		attr("height", 20);
 
 		// Column
 		// append("rect").//

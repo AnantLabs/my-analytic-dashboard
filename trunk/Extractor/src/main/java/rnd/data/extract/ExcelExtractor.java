@@ -18,7 +18,7 @@ public class ExcelExtractor extends AbstractDataProcessor {
 	@Override
 	public Object processRequest(Object requestPayLoad, DataProcessorCallback callback) throws Throwable {
 
-		FileInputStream fis = new FileInputStream("E:/Vinod/MyProjects/MyDashboard/Sample/BRIJASH SALES REPORT - 10.XLS");
+		FileInputStream fis = new FileInputStream("E:/Vinod/MyLab/MyDashboard/Sample/BRIJASH SALES REPORT - 10.XLS");
 
 		HSSFWorkbook wb = new HSSFWorkbook(fis);
 
@@ -27,15 +27,15 @@ public class ExcelExtractor extends AbstractDataProcessor {
 		Map responseData = new HashMap();
 		
 		List columnNames = extractColumnNames(sheet.getRow(0));
-		responseData.put("keys", columnNames);
+		responseData.put("header", columnNames);
 
 		List data = new ArrayList();
 		
-		for (int i = sheet.getFirstRowNum(); i < sheet.getLastRowNum(); i++) {
+		for (int i = sheet.getFirstRowNum() + 1; i <= sheet.getLastRowNum(); i++) {
 			List columnValues = extractColumnValues(sheet.getRow(i));
 			data.add(columnValues);
 		}
-		responseData.put("values", data);
+		responseData.put("data", data);
 
 		return responseData;
 	}

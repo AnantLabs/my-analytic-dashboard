@@ -6,15 +6,18 @@ import java.util.Map;
 public class SumAggregator extends Aggregator {
 
 	@Override
-	public Object processRequest(AggregateInfo aggregateInfo, DataProcessorCallback callback) throws Throwable {
+	public Object processRequest(Map<String, String> aggregateInfo, DataProcessorCallback callback) throws Throwable {
 		return getDelegate().processRequest(null, null);
 	}
 
 	@Override
-	public Object processResponse(Object responseData, AggregateInfo aggregateInfo, Map<String, Number> aggrResponseData, rnd.data.process.DataProcessor.DataProcessorCallback callback) throws Throwable {
+	public Object processResponse(Object responseData, Map<String, String> aggregateInfo, Map<String, Number> aggrResponseData, rnd.data.process.DataProcessor.DataProcessorCallback callback) throws Throwable {
 
-		String key = aggregateInfo.getKey();
-		String value = aggregateInfo.getValue();
+		String key = aggregateInfo.get("key");
+		String value = aggregateInfo.get("value");
+
+		// String key = aggregateInfo.getKey();
+		// String value = aggregateInfo.getValue();
 
 		List headers = (List) ((Map) responseData).get("header");
 		List<List> data = (List<List>) ((Map) responseData).get("data");
