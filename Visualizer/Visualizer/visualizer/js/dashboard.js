@@ -2,23 +2,14 @@
 
 function DashboardCtrl($scope, $resource) {
 
+	var margin = {
+		top : 10,
+		right : 30,
+		bottom : 30,
+		left : 30
+	};
+
 	$scope.initChart = function() {
-		var margin = {
-			top : 10,
-			right : 30,
-			bottom : 30,
-			left : 30
-		}, //
-		width = 960 - margin.left - margin.right, //
-		height = 500 - margin.top - margin.bottom;
-
-		d3.select("#chart").//
-		append("svg").//
-		attr("width", width + margin.left + margin.right).//
-		attr("height", height + margin.top + margin.bottom).//
-		append("g").//
-		attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 	};
 
 	$scope.fetchData = function(params) {
@@ -26,9 +17,8 @@ function DashboardCtrl($scope, $resource) {
 		$resource('/Publisher/api/data/sales').get(//
 		// success
 		function(response) {
-			$scope.keys = response.keys;
-			d3.selectAll("rect").data(response.values).enter().append("rect");
-			alert('Data Fetched');
+			$scope.response = response;
+			// alert('Data Fetched');
 		},//
 		// error
 		function() {
@@ -39,36 +29,40 @@ function DashboardCtrl($scope, $resource) {
 
 	$scope.drawChart = function(params) {
 
-		d3.selectAll("rect").//
+		var width = 400 - margin.left - margin.right;
+		var height = 250 - margin.top - margin.bottom;
+
+		d3.select("#chart").select("svg").remove();
+		var rects = d3.select("#chart").append("svg").//
+		attr("width", width + margin.left + margin.right).//
+		attr("height", height + margin.top + margin.bottom).//
+		append("g").attr("transform",
+				"translate(" + margin.left + "," + margin.top + ")").//
+		selectAll("rect").data($scope.response.values).enter().append("rect");//
 
 		// Bar
-		attr("y", function(d, i) {
-			return i * 25;
-		}).//
-		attr("width", function(d, i) {
-			return d;
-		}).//
-		attr("height", 20);
-
+		if (params.type == 'Bar') {
+			rects.attr("x", 1).attr("y", function(d, i) {
+				return i * 25;
+			}).//
+			attr("width", function(d, i) {
+				return d * (4/3);
+			}).//
+			attr("height", 20);
+		}
 		// Column
-		// append("rect").//
-		// attr("x", function(d, i) {
-		// return i * 25;
-		// }).//
-		// attr("y", function(d, i) {
-		// return height - (d * 500);
-		// }).//
-		// attr("width", function(d, i) {
-		// return 20;
-		// }).//
-		// attr("height", function(d, i) {
-		// return height;
-		// });
-
+		else if (params.type == 'Column') {
+			rects.attr("x", function(d, i) {
+				return i * 25;
+			}).//
+			attr("y", function(d, i) {
+				return height - (d * .9);
+			}).//
+			attr("width", 20).//
+			attr("height", height);
+		}
 		// Pie
-
 		// Line
-		
 		// Area
 
 	};
