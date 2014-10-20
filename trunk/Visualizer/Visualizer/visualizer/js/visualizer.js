@@ -1,11 +1,5 @@
 'use strict';
 
-/* App Module */
-
-/**
- * Declare app and router
- */
-
 var app = angular.module('visualizer', ['ngRoute','ui.sortable','ngResource','ngSanitize','ngGrid','ui','ui.bootstrap','angular-carousel','ngTouch']).
     config([ '$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {
     	
@@ -14,9 +8,7 @@ var app = angular.module('visualizer', ['ngRoute','ui.sortable','ngResource','ng
       	$routeProvider.
       	
         when('/home', {templateUrl: 'visualizer/partials/home.html', controller: HomeCtrl}).
-        
         when('/dashboard', {templateUrl: 'visualizer/partials/dashboard.html', controller: DashboardCtrl}).
-        
         otherwise({redirectTo: '/dashboard'});
       	
 		$httpProvider.interceptors.push(function($q, $rootScope, $location) {
@@ -41,14 +33,17 @@ var app = angular.module('visualizer', ['ngRoute','ui.sortable','ngResource','ng
 
 					'responseError': function(rejection) {
 	        	
+						alert(rejection.data.exception.message);
+						// return $q.reject(rejection);
+						
 						var status = rejection.status;
 						var config = rejection.config;
 						var method = config.method;
 						var url = config.url;
 
-						if (status == 401) {
-							$rootScope.logout();
-						}
+//						if (status == 401) {
+//							$rootScope.logout();
+//						}
 						
 						if (status >= 500 && rejection.data.exception) {
 							$rootScope.exception = rejection.data.exception;
@@ -57,6 +52,7 @@ var app = angular.module('visualizer', ['ngRoute','ui.sortable','ngResource','ng
 						
 						$rootScope.error = method + " on " + url + " failed with status " + status;
 						$rootScope.closeLoadingModal();
+
 						return $q.reject(rejection);
 					}
 				};
@@ -77,15 +73,12 @@ app.run(function($rootScope, $http, $location, $resource) {
 			$rootScope.template[key]=value;
         });
 	});
-
-	/*Reset error when a new view is loaded */
-	$rootScope.$on('$viewContentLoaded', function() {
-		delete $rootScope.error;
-	});
 	
 	$resource('visualizer/config/app-config.json').get(function(data){	
 		$rootScope.appConfig = data;
 	});
+	
+	$rootScope.API_BASE_URL = '/Publisher/api/data/';
 	
 	$rootScope.opts = {
 	    backdropFade: true,

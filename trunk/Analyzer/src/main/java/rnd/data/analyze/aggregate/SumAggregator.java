@@ -7,7 +7,7 @@ public class SumAggregator extends Aggregator {
 
 	@Override
 	public Object processRequest(Map<String, String> aggregateInfo, DataProcessorCallback callback) throws Throwable {
-		return getDelegate().processRequest(null, null);
+		return getDelegate().processRequest(aggregateInfo, null);
 	}
 
 	@Override
@@ -15,9 +15,6 @@ public class SumAggregator extends Aggregator {
 
 		String key = aggregateInfo.get("key");
 		String value = aggregateInfo.get("value");
-
-		// String key = aggregateInfo.getKey();
-		// String value = aggregateInfo.getValue();
 
 		List headers = (List) ((Map) responseData).get("header");
 		List<List> data = (List<List>) ((Map) responseData).get("data");

@@ -1,6 +1,6 @@
 package rnd.data.extract;
 
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,25 +12,25 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import rnd.data.process.AbstractDataProcessor;
+import rnd.util.IOUtils;
 
-public class ExcelExtractor extends AbstractDataProcessor {
+public class ExcelExtractor extends AbstractDataProcessor<Map, Map> {
 
 	@Override
-	public Object processRequest(Object requestPayLoad, DataProcessorCallback callback) throws Throwable {
+	public Object processRequest(Map requestPayLoad, DataProcessorCallback callback) throws Throwable {
 
-		FileInputStream fis = new FileInputStream("E:/Vinod/MyLab/MyDashboard/Sample/BRIJASH SALES REPORT - 10.XLS");
+		InputStream is = IOUtils.getResourceAsStream("/sample/" + requestPayLoad.get("exec") + ".xls");
 
-		HSSFWorkbook wb = new HSSFWorkbook(fis);
-
+		HSSFWorkbook wb = new HSSFWorkbook(is);
 		HSSFSheet sheet = wb.getSheetAt(0);
 
 		Map responseData = new HashMap();
-		
+
 		List columnNames = extractColumnNames(sheet.getRow(0));
 		responseData.put("header", columnNames);
 
 		List data = new ArrayList();
-		
+
 		for (int i = sheet.getFirstRowNum() + 1; i <= sheet.getLastRowNum(); i++) {
 			List columnValues = extractColumnValues(sheet.getRow(i));
 			data.add(columnValues);
@@ -41,7 +41,7 @@ public class ExcelExtractor extends AbstractDataProcessor {
 	}
 
 	@Override
-	public Object processResponse(Object responseData, Object requestPayLoad, Object responsePayLoad, DataProcessorCallback callback) throws Throwable {
+	public Object processResponse(Object responseData, Map requestPayLoad, Map responsePayLoad, DataProcessorCallback callback) throws Throwable {
 		return responseData;
 	}
 
