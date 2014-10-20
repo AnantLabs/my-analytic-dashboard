@@ -14,6 +14,9 @@ public class IOUtils {
 			is = IOUtils.class.getClassLoader().getResourceAsStream(fileName);
 		}
 		if (is == null) {
+			is = Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
+		}
+		if (is == null) {
 			throw new FileNotFoundException(fileName);
 		}
 		return is;
@@ -24,7 +27,6 @@ public class IOUtils {
 	}
 
 	public static String readContent(String fileName, boolean appendNewLine) throws IOException {
-
 		return readContent(getResourceAsStream(fileName), true, appendNewLine);
 	}
 

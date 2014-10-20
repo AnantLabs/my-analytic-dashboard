@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import rnd.data.process.DataProcessor;
 import rnd.data.process.DataProcessorFactory;
@@ -17,27 +16,6 @@ public abstract class AbstractDataRouter implements DataRouter {
 
 	public DataProcessorFactory getDataProcessorFactory() {
 		return ApplicationContextProvider.get().getBean(DataProcessorFactory.class);
-	}
-
-	public static void handleException(Throwable exception, HttpServletResponse httpServletResponse) throws Throwable {
-		handleException(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, exception, httpServletResponse);
-	}
-
-	protected static void handleException(int sc, Throwable exception, HttpServletResponse httpServletResponse) throws IOException, Throwable {
-		httpServletResponse.setStatus(sc);
-		setExceptionTrace(exception, httpServletResponse);
-		httpServletResponse.getOutputStream().flush();
-	}
-
-	protected static void setExceptionTrace(Throwable exception, HttpServletResponse httpServletResponse) throws IOException, Throwable {
-		Map<String, String> exceptionMap = new HashMap<String, String>();
-
-		String defaultMessage = exception.getMessage();
-		exceptionMap.put("message", defaultMessage);
-		byte[] response = ("{\"exception\" : " + JacksonUtils.convertToJSON(exceptionMap) + "}").getBytes();
-
-		httpServletResponse.setContentType("application/json");
-		httpServletResponse.getOutputStream().write(response);
 	}
 
 	public Object sendDataRequest(String resource, Object requestPayLoad) throws Throwable {
