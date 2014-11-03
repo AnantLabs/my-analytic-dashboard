@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="src" path="Publisher/src/main/java"/>
+	<classpathentry kind="src" path="Publisher/src/main/resources"/>
+	<classpathentry kind="src" path="Subscriber/src/main/java"/>
+	<classpathentry kind="src" path="Subscriber/src/main/resources"/>
+	<classpathentry kind="src" path="Publisher/src/publisher/java"/>
+	<classpathentry kind="src" path="Publisher/src/publisher/resources"/>
+	<classpathentry kind="src" path="Subscriber/src/subscriber/java"/>
+	<classpathentry kind="src" path="Subscriber/src/subscriber/resources"/>
+	<classpathentry kind="src" path="src/publisher/java"/>
+	<classpathentry kind="src" path="src/publisher/resources"/>
+	<classpathentry kind="src" path="src/subscriber/java"/>
+	<classpathentry kind="src" path="src/subscriber/resources"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

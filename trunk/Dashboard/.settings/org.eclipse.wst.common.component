@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Visualizer">
-        <wb-resource deploy-path="/" source-path="/Visualizer"/>
-        <property name="context-root" value="Visualizer"/>
-        <property name="java-output-path" value="/Visualizer/build/classes"/>
+    <wb-module deploy-name="Dashboard">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Publisher/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Publisher/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Subscriber/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Subscriber/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Publisher/src/publisher/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Publisher/src/publisher/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Subscriber/src/subscriber/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Subscriber/src/subscriber/resources"/>
+        <wb-resource deploy-path="/" source-path="/webapp"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/publisher/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/publisher/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/subscriber/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/subscriber/resources"/>
+        <property name="java-output-path" value="/Dashboard/build/classes"/>
+        <property name="context-root" value="Dashboard"/>
     </wb-module>
 </project-modules>
