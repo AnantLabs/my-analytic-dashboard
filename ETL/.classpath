@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="Extractor/src/main/java"/>
+	<classpathentry kind="src" path="Loader/src/main/java"/>
+	<classpathentry kind="src" path="Transformer/src/main/java"/>
+	<classpathentry kind="src" path="src/extractor/java"/>
+	<classpathentry kind="src" path="src/extractor/resources"/>
+	<classpathentry kind="src" path="src/loader/java"/>
+	<classpathentry kind="src" path="src/loader/resources"/>
+	<classpathentry kind="src" path="src/transformer/java"/>
+	<classpathentry kind="src" path="src/transformer/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
