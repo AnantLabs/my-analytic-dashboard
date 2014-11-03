@@ -3,15 +3,47 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>rnd.data.analytic</groupId>
-	<artifactId>Visualizer</artifactId>
-	<name>Visualizer</name>
-	<packaging>war</packaging>
+	<groupId>rnd.data</groupId>
+	<artifactId>Publisher</artifactId>
+	<name>Publisher</name>
 	<version>1.0.0</version>
+	<packaging>war</packaging>
+
+	<properties>
+		<java-version>1.6</java-version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>3.1.2.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>rnd.data.etl</groupId>
+			<artifactId>Extractor</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>rnd.data.analytic</groupId>
+			<artifactId>Analyzer</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>rnd.data</groupId>
+			<artifactId>Router</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 
 		<plugins>
+
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<version>2.9</version>
@@ -20,8 +52,20 @@
 					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
-		</plugins>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<compilerArgument>-Xlint:all</compilerArgument>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 
 </project>
