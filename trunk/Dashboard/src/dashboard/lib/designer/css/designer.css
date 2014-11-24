@@ -1,0 +1,6 @@
+.ui-sortable > [class*="span"]
+{
+	border: thin;
+	border-color: navy;
+	border-style: dashed;
+}

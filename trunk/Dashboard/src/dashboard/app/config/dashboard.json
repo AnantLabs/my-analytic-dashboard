@@ -1,0 +1,13 @@
+{
+
+"dashboard" :	
+	{ 
+		"charts" :
+			[
+				{ "id" : "chart1", "params" : { "exec" : "B", "by" : "P", "type" : "Bar" } },
+				{ "id" : "chart2", "params" : { "exec" : "B", "by" : "P", "type" : "Column" } },
+				{ "id" : "chart4", "params" : { "exec" : "B", "by" : "P", "type" : "Line" } },
+				{ "id" : "chart3", "params" : { "exec" : "B", "by" : "P", "type" : "Pie" } }				
+			]
+	}
+}

@@ -1,0 +1,6 @@
+<div class="row" ondragstart="dragStart()" ondragend="dragEnd()" ondrag="drag()" ondrop="drop()">
+	<div class="span" ng-include src='"app/template/toolbars.html"'></div>
+</div>
+<div class="row" ondragenter="dragEnter()" ondragleave="dragLeave()" ondragover="dragOver()">
+	<div ui-sortable ng-model="dashboard.charts" ng-controller="DesignCtrl" ng-include src='"app/template/dashboard.html"' class="container-fluid"></div>
+</div>
