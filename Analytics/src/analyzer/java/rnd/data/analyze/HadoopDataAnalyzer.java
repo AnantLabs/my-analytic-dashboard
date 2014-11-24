@@ -2,7 +2,6 @@ package rnd.data.analyze;
 
 import rnd.data.process.AbstractDataProcessor;
 
-@SuppressWarnings("unchecked")
 public class HadoopDataAnalyzer extends AbstractDataProcessor {
 
 	@Override

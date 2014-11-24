@@ -1,0 +1,24 @@
+<!--
+<div class="span3">
+
+	<select size="2" class="nav nav-list">
+		<option>Dashboard 1</option>
+		<option>Dashboard 2</option>
+	</select>
+</div>
+-->
+
+
+<ul class="nav nav-tabs">
+	<li class="active"><a data-target="#design" data-toggle="tab"> Design </a></li>
+	<li><a data-target="#view" data-toggle="tab"> View </a></li>
+</ul>
+
+<div class="tab-content">
+	<div class="tab-pane active" id="design">
+		<div ng-include src='"app/template/designer.html"'></div>
+	</div>
+	<div class="tab-pane" id="view">
+		<div ng-include src='"app/template/viewer.html"'></div>
+	</div>
+</div>

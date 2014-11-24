@@ -1,0 +1,10 @@
+{
+	"template" :
+		[
+			{ "name" : "Home", "href" : "/home", "template" : "lib/spa/template/home.html" },
+			{ "name" : "Design", "href" : "/design", "template" : "app/template/designer.html" },
+			{ "name" : "View", "href" : "/view", "template" : "app/template/viewer.html" },
+			{ "name" : "Visualize", "href" : "/visualize", "template" : "app/template/visualizer.html" },
+			{ "name" : "About", "href" : "/about", "template" : "lib/spa/template/about.html" }
+		]
+}

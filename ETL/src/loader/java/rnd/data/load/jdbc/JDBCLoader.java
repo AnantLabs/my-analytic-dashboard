@@ -2,7 +2,6 @@ package rnd.data.load.jdbc;
 
 import rnd.data.process.AbstractDataProcessor;
 
-@SuppressWarnings("unchecked")
 public class JDBCLoader extends AbstractDataProcessor {
 
 	@Override

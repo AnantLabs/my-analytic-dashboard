@@ -14,6 +14,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import rnd.data.process.AbstractDataProcessor;
 import rnd.util.IOUtils;
 
+@SuppressWarnings("unchecked")
 public class ExcelExtractor extends AbstractDataProcessor<Map, Map> {
 
 	@Override

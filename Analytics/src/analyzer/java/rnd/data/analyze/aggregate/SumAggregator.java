@@ -3,6 +3,7 @@ package rnd.data.analyze.aggregate;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("unchecked")
 public class SumAggregator extends Aggregator {
 
 	@Override
