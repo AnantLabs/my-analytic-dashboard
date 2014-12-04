@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import rnd.data.process.DataProcessor;
 import rnd.data.process.DataProcessorFactory;
-import rnd.service.rest.API;
-import rnd.service.rest.APIMethod;
 import rnd.util.ApplicationContextProvider;
 import rnd.util.IOUtils;
 import rnd.util.JacksonUtils;
@@ -24,30 +22,28 @@ public class APIProvider extends HttpServlet {
 		return ApplicationContextProvider.get().getBean(DataProcessorFactory.class);
 	}
 
+	public APIStateManager getAPIStateManager() {
+		return ApplicationContextProvider.get().getBean(APIStateManager.class);
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String requestURI = request.getRequestURI();
 
-		APIMethod method = APIMethod.valueOf(request.getMethod());
+		// - /<context-root>/api/<version>/<base>/<resource>
+		String[] params = requestURI.split("/");
+		HashMap requestPayLoad = new HashMap();
+
+		for (int i = 6; i < params.length; i++) {
+			requestPayLoad.put("param" + i, params[i]);
+		}
+
+		API resource = new API(params[3], params[4], params[5], APIMethod.valueOf(request.getMethod()));
 
 		try {
+			Object data = sendDataRequest(resource, requestPayLoad);
 
-			String[] params = requestURI.split("/");
-
-			API api = new API("1.0", params[2], params[3], method);
-			if (params.length > 4) {
-				api.setResource(params[4]);
-			}
-
-			Map requestPayLoad = new HashMap();
-			Map responsePayLoad = new HashMap();
-
-			Object data;
-			if (method == APIMethod.GET) {
-				data = receiveDataResponse(api, requestPayLoad, responsePayLoad);
-			} else {
-				data = sendDataRequest(api, requestPayLoad);
-			}
+			getAPIStateManager().setAPIState(request, resource, requestPayLoad);
 
 			response.setContentType("application/json");
 			if (!(data instanceof String)) {
@@ -64,6 +60,7 @@ public class APIProvider extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -98,16 +95,16 @@ public class APIProvider extends HttpServlet {
 		return payLoad;
 	}
 
-	public Object sendDataRequest(Object resource, Object requestPayLoad) throws Throwable {
+	public Object sendDataRequest(API resource, Map requestPayLoad) throws Throwable {
+
+		API requiredResource = resource.getRequiredResource();
+		DataProcessor requiredDataProcessor = getDataProcessorFactory().getDataProcessor(requiredResource);
+		
 		DataProcessor dataProcessor = getDataProcessorFactory().getDataProcessor(resource);
+		
 		Object responseData = dataProcessor.processRequest(requestPayLoad, null);
 		responseData = dataProcessor.processResponse(responseData, requestPayLoad, new HashMap(), null);
-		return responseData;
-	}
 
-	public Object receiveDataResponse(Object resource, Object requestPayLoad, Object responsePayLoad) throws Throwable {
-		DataProcessor dataProcessor = getDataProcessorFactory().getDataProcessor(resource);
-		Object responseData = dataProcessor.processResponse(null, requestPayLoad, responsePayLoad, null);
 		return responseData;
 	}
 

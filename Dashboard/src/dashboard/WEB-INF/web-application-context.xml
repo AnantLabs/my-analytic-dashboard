@@ -7,10 +7,23 @@
 	<!-- <util:properties id="app-config" location="classpath:config/app-config.properties"/> -->
 
 	<!-- <import resource="config/camel-config.xml" /> -->
-	
+
 	<import resource="classpath:config/processor-config.xml"/>
-	<import resource="classpath:config/extractor-config.xml"/>
-    <import resource="classpath:config/analyzer-config.xml" />
+
+	<import resource="classpath:config/subscriber-config.xml"/>
 	<import resource="classpath:config/publisher-config.xml"/>
+
+	<bean class="rnd.data.process.DataProcessorFactory">
+		<property name="registry">
+			<map merge="true">
+
+				<entry key-ref="extract" value-ref="excelExtractor"/>
+				<entry key-ref="transform" value-ref="dummyTransformer"/>
+				<entry key-ref="load" value-ref="dummyLoader"/>
+
+			</map>
+		</property>
+	</bean>
+
 
 </beans>

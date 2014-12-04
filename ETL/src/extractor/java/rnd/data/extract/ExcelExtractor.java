@@ -20,7 +20,7 @@ public class ExcelExtractor extends AbstractDataProcessor<Map, Map> {
 	@Override
 	public Object processRequest(Map requestPayLoad, DataProcessorCallback callback) throws Throwable {
 
-		InputStream is = IOUtils.getResourceAsStream("/sample/" + requestPayLoad.get("exec") + ".xls");
+		InputStream is = IOUtils.getResourceAsStream("E:/Vinod/MyLab/MyDashboard/trunk/Sample/" + requestPayLoad.get("param6") + ".xls");
 
 		HSSFWorkbook wb = new HSSFWorkbook(is);
 		HSSFSheet sheet = wb.getSheetAt(0);
@@ -28,7 +28,7 @@ public class ExcelExtractor extends AbstractDataProcessor<Map, Map> {
 		Map responseData = new HashMap();
 
 		List columnNames = extractColumnNames(sheet.getRow(0));
-		responseData.put("header", columnNames);
+		responseData.put("headers", columnNames);
 
 		List data = new ArrayList();
 

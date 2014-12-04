@@ -1,0 +1,17 @@
+<ul class="nav nav-tabs">
+	<li class="active"><a data-target="#extract" data-toggle="tab"> Extract </a></li>
+	<li><a data-target="#transform" data-toggle="tab"> Transform </a></li>
+	<li><a data-target="#load" data-toggle="tab"> Load </a></li>
+</ul>
+
+<div class="tab-content">
+	<div class="tab-pane active" id="extract">
+		<div ng-include src='"app/template/subscribe/extractor.html"'></div>
+	</div>
+	<div class="tab-pane" id="transform">
+		<div ng-include src='"app/template/subscribe/transformer.html"'></div>
+	</div>
+	<div class="tab-pane" id="load">
+		<div ng-include src='"app/template/subscribe/loader.html"'></div>
+	</div>
+</div>

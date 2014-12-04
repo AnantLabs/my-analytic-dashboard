@@ -1,25 +1,25 @@
-app.controller('DesignCtrl', function($rootScope, $scope, Dashboard) {
+app.controller('SubscribeCtrl', function($rootScope, $scope, Subscriber) {
 
-	if (!$rootScope.dashboard) {
-		Dashboard.getMetadata(0);
-	}
-
-});
-
-app.controller('ViewCtrl', function($rootScope, $scope, Dashboard) {
-
-	if (!$rootScope.dashboard) {
-		Dashboard.getMetadata(0);
-	}
+	$scope.doExtract = function() {
+		Subscriber.extract($scope.dashboard.datasource);
+	};
 
 });
 
-app.controller('VisualizeCtrl', function($rootScope, $scope, Dashboard) {
+app.controller('PublishCtrl', function($rootScope, $scope, Publisher) {
 
-	if (!$rootScope.dashboard) {
-		Dashboard.getMetadata(0);
-	}
-	
-	Dashboard.getData(0);
+	$scope.doAnalyze = function() {
+		Publisher.analyze($scope.dashboard.key, $scope.dashboard.value);
+	};
+
+});
+
+app.controller('DashboardCtrl', function($rootScope, $scope, Dashboard) {
+
+	// if (!$rootScope.dashboard) {
+	// Dashboard.getMetadata(0);
+	// }
+	//
+	// Dashboard.getData(0);
 
 });
