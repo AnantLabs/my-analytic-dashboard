@@ -4,39 +4,31 @@
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<import resource="classpath:config/fetcher-config.xml"/>
-	<import resource="classpath:config/analyzer-config.xml"/>
+	<import resource="classpath:config/extractor-config.xml"/>
+	<import resource="classpath:config/transformer-config.xml"/>
+	<import resource="classpath:config/loader-config.xml"/>
 	
-	<!-- 
-	<bean id="salesProcessor" class="rnd.data.publish.SalesProcessor">
-		<property name="delegate">
-			<bean parent="sumAggregator">
-				<property name="delegate" ref="excelExtractor"/>
-			</bean>
-		</property>
-	</bean>
-
-	<bean id="sales_customer" class="rnd.service.rest.API">
+	<bean id="extract" class="rnd.service.rest.API">
 		<property name="version" value="1.0"/>
-		<property name="baseURL" value="sales"/>
-		<property name="resource" value="customer"/>
+		<property name="baseURL" value="subscribe"/>
+		<property name="resource" value="extract"/>
 		<property name="method" value="GET"/>
 	</bean>
-
-	<bean id="sales_product" class="rnd.service.rest.API">
+	
+	<bean id="transform" class="rnd.service.rest.API">
 		<property name="version" value="1.0"/>
-		<property name="baseURL" value="sales"/>
-		<property name="resource" value="product"/>
+		<property name="baseURL" value="subscribe"/>
+		<property name="resource" value="transform"/>
 		<property name="method" value="GET"/>
+		<property name="requiredResource" ref="extract"/>
+	</bean>
+	
+	<bean id="load" class="rnd.service.rest.API">
+		<property name="version" value="1.0"/>
+		<property name="baseURL" value="subscribe"/>
+		<property name="resource" value="load"/>
+		<property name="method" value="GET"/>
+		<property name="requiredResource" ref="transform"/>
 	</bean>
 
-	<bean class="rnd.data.process.DataProcessorFactory">
-		<property name="registry">
-			<map>
-				<entry key-ref="sales_customer" value-ref="salesProcessor"/>
-				<entry key-ref="sales_product" value-ref="salesProcessor"/>
-			</map>
-		</property>
-	</bean>
-	-->
 </beans>

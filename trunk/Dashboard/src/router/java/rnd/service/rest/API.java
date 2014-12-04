@@ -7,6 +7,8 @@ public class API {
 
 	private String baseURL;
 	private String resource = "";
+	
+	private API requiredResource;
 
 	public API() {
 	}
@@ -48,6 +50,14 @@ public class API {
 
 	public void setResource(String resource) {
 		this.resource = resource;
+	}
+	
+	public API getRequiredResource() {
+		return requiredResource;
+	}
+	
+	public void setRequiredResource(API requiredResource) {
+		this.requiredResource = requiredResource;
 	}
 
 	@Override

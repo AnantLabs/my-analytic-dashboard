@@ -9,26 +9,22 @@ var app = angular.module('spa', [ 'ngRoute', 'ngResource', 'ui' ]).config(
 
 					when('/home', {
 						templateUrl : 'lib/spa/template/home.html',
-						controller : function HomeCtrl() {
-						}
+						controller : 'HomeCtrl'
 					}).//
 
 					when('/subscribe', {
-						templateUrl : 'app/template	/subscriber.html',
-						controller : function HomeCtrl() {
-						}
+						templateUrl : 'app/template/subscribe/subscriber.html',
+						controller : 'SubscribeCtrl'
 					}).//
-					
+
 					when('/publish', {
-						templateUrl : 'app/template	/publisher.html',
-						controller : function HomeCtrl() {
-						}
+						templateUrl : 'app/template/publish/publisher.html',
+						controller : 'PublishCtrl'
 					}).//
 
 					when('/dashboard', {
-						templateUrl : 'app/template	/dashboards.html',
-						controller : function HomeCtrl() {
-						}
+						templateUrl : 'app/template/dashboard/dashboard.html',
+						controller : 'DashboardCtrl'
 					}).//
 
 					when('/about', {

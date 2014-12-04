@@ -1,0 +1,27 @@
+Function :
+<select>
+	<option selected="selected">Aggregate</option>
+</select>
+<!--  -->
+Key Column :
+<select ng-moodel="dashboard.key">
+	<option ng-repeat="header in dashboard.headers">{{header}}</option>
+</select>
+<!--  -->
+Value Column :
+<select ng-moodel="dashboard.value">
+	<option ng-repeat="header in dashboard.headers">{{header}}</option>
+</select>
+<!--  -->
+<input type="button" value="Analyze">
+
+<table class="table">
+	<tr>
+		<th>Keys</th>
+		<th>Values</th>
+	</tr>
+	<tr ng-repeat="key in keys">
+		<td>{{key}}</td>
+		<td>{{values[$index]}}</td>
+	</tr>
+</table>

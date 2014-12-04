@@ -12,12 +12,12 @@ public class SumAggregator extends Aggregator {
 	}
 
 	@Override
-	public Object processResponse(Object responseData, Map<String, String> aggregateInfo, Map<String, Number> aggrResponseData, rnd.data.process.DataProcessor.DataProcessorCallback callback) throws Throwable {
+	public Object processResponse(Object responseData, Map<String, String> aggregateInfo, Map<String, Number> aggrResponseData, DataProcessorCallback callback) throws Throwable {
 
-		String key = aggregateInfo.get("key");
-		String value = aggregateInfo.get("value");
+		String key = aggregateInfo.get("param6");
+		String value = aggregateInfo.get("param7");
 
-		List headers = (List) ((Map) responseData).get("header");
+		List headers = (List) ((Map) responseData).get("headers");
 		List<List> data = (List<List>) ((Map) responseData).get("data");
 
 		int keyIndx = headers.indexOf(key);
@@ -25,7 +25,7 @@ public class SumAggregator extends Aggregator {
 
 		for (List columnValues : data) {
 
-			String keyClmn = (String) columnValues.get(keyIndx);
+			String keyClmn = columnValues.get(keyIndx).toString();
 			Number valClmn = (Number) columnValues.get(valIndx);
 
 			Number aggrValue = aggrResponseData.get(keyClmn);

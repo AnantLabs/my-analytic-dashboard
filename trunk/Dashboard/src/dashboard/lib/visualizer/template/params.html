@@ -1,30 +1,25 @@
+
+
 <form id=params>
-
-	<h5>Executive:</h5>
-	<select id="exec" ng-model="params.exec" ng-change="fetchData()">
-		<option></option>
-		<option value="B">Brijash</option>
-		<option value="D">Dinesh</option>
-		<option value="R">Rajiv</option>
-		<option value="S">Sameer</option>
-	</select>
-
+	
+	<!-- 
 	<h5>Total Sales By:</h5>
 	<select id="by" ng-model="params.by" ng-change="fetchData()">
 		<option value="P">Product</option>
 		<option value="CST">Customer</option>
 		<option value="CT">City</option>
 	</select>
-
-	<!-- 
+	-->
+	
+	
 	<h5>Type:</h5>
-	<select id="type" ng-model="params.type" ng-change="drawChart(params)">
+	<select id="type" ng-model="params.type">
 		<option></option>
-		<option>Bar</option>
+		<option selected="selected">Bar</option>
 		<option>Column</option>
 		<option>Pie</option>
 		<option>Line</option>
 	</select>
-	-->
 	
+
 </form>

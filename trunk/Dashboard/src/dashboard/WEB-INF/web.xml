@@ -14,7 +14,6 @@
 		<display-name>API Provider</display-name>
 		<servlet-name>APIProvider</servlet-name>
 		<servlet-class>rnd.service.rest.APIProvider</servlet-class>
-		<load-on-startup>1</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>

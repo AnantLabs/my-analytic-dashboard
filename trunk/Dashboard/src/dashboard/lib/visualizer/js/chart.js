@@ -36,15 +36,16 @@ function ChartCtrl($element, $resource, $rootScope, $scope) {
 
 		if ($scope.params.exec && $scope.params.by) {
 
-			$resource($rootScope.API_BASE_URL + '/sales/product').//
+			$resource($rootScope.API_BASE_URL + '/sales/product/' + $scope.params.exec).//
 			get(function(response) {
+				$scope.response = response;
 				$scope.drawChart();
 			});
 
 		}
 	};
 
-	$scope.drawChart = function(params) {
+	$scope.drawChart = function() {
 
 		// d3.select($element[0]).select("svg");
 

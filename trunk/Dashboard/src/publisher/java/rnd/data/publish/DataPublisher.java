@@ -6,7 +6,7 @@ import java.util.Map;
 import rnd.data.process.AbstractDataProcessor;
 
 @SuppressWarnings("unchecked")
-public class SalesProcessor extends AbstractDataProcessor<Map<String, String>, Map<String, Number>> {
+public class DataPublisher extends AbstractDataProcessor<Map<String, String>, Map<String, Number>> {
 
 	@Override
 	public Object processRequest(Map<String, String> requestPayLoad, DataProcessorCallback callback) throws Throwable {
