@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="Dashboard">
-
-		<wb-resource deploy-path="/" source-path="/src/dashboard" tag="defaultRootSource"/>
-
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/publisher/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/publisher/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/subscriber/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/subscriber/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/router/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/processor/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/analyzer/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/analyzer/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/extractor/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/extractor/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/fetcher/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/fetcher/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/loader/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/loader/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/transformer/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/transformer/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/processor/resource"/>
+        <wb-resource deploy-path="/" source-path="/WebContent"/>
 
         <property name="context-root" value="Dashboard"/>
         <property name="java-output-path" value="/src/dashboard/WEB-INF/classes"/>
