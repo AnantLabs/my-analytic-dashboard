@@ -1,0 +1,34 @@
+<form>
+
+	Function :
+	<!--  -->
+	<select>
+		<option selected="selected">Aggregate</option>
+	</select>
+	<!--  -->
+	Key Column :
+	<!--  -->
+	<select id="key" ng-model="dashboard.key">
+		<option ng-repeat="header in dashboard.headers">{{header}}</option>
+	</select>
+	<!--  -->
+	Value Column :
+	<!--  -->
+	<select id="value" ng-model="dashboard.value">
+		<option ng-repeat="header in dashboard.headers">{{header}}</option>
+	</select>
+	<!--  -->
+	<input type="button" value="Analyze" ng-click="doAnalyze()">
+
+</form>
+
+<table class="table">
+	<tr>
+		<th>Keys</th>
+		<th>Values</th>
+	</tr>
+	<tr ng-repeat="key in dashboard.keys">
+		<td>{{key}}</td>
+		<td>{{dashboard.values[$index]}}</td>
+	</tr>
+</table>
