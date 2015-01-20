@@ -27,6 +27,8 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/etl/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/analytics/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/analytics/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/integrate/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/integrate/resources"/>
 		
         <property name="java-output-path" value="/WebContent/WEB-INF/classes"/>
         

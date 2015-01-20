@@ -19,37 +19,37 @@ import rnd.util.MapBuilder;
 @SuppressWarnings("unchecked")
 public class APIProvider extends HttpServlet {
 
-	public DataProcessorFactory getDataProcessorFactory() {
+	public static DataProcessorFactory getDataProcessorFactory() {
 		return ApplicationContextProvider.get().getBean(DataProcessorFactory.class);
 	}
 
-	public APIRegistry getAPIRegistry() {
+	public static APIRegistry getAPIRegistry() {
 		return ApplicationContextProvider.get().getBean(APIRegistry.class);
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//response.setHeader("Access-Control-Allow-Origin", "http://localhost:8888");
-		//response.setHeader("Access-Control-Allow-Origin", "http://my-analytical-dashboard.appspot.com");
+		// response.setHeader("Access-Control-Allow-Origin", "http://localhost:8888");
+		// response.setHeader("Access-Control-Allow-Origin", "http://my-analytical-dashboard.appspot.com");
 		response.setHeader("Access-Control-Allow-Origin", "*");
-		
+
 		APIStateManager.setRequest(request);
 
 		String requestURI = request.getRequestURI();
-
 		String[] params = requestURI.split("/");
-		Map requestPayLoad = new HashMap();
 
-		// - /host/<context-root>/api/ 		<version>/<base>/<resource>
+		// - /host/<context-root>/api/ <version>/<base>/<resource>
 		int startIndx = 3;
 
-		// - /host/api/						<version>/<base>/<resource>
-		//int startIndx = 2;
-		
+		// - /host/api/ <version>/<base>/<resource>
+		// int startIndx = 2;
+
 		API resource = new API(params[startIndx++], params[startIndx++], params[startIndx++], APIMethod.valueOf(request.getMethod()));
 
-		for (int i = startIndx; i < params.length; i++) {
-			requestPayLoad.put(resource.getResource() + ":param" + i, params[i]);
+		Map requestPayLoad = new HashMap();
+		for (int i = 0; i < params.length - startIndx; i++) {
+			requestPayLoad.put(resource.getResource() + ":param" + i, params[i + startIndx]);
 		}
 
 		try {
@@ -74,14 +74,8 @@ public class APIProvider extends HttpServlet {
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
-
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
-
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
 	public static void handleException(Throwable exception, HttpServletResponse httpResponse) throws IOException {
@@ -105,7 +99,7 @@ public class APIProvider extends HttpServlet {
 	}
 
 	protected static <T extends Map> T parseRequest(HttpServletRequest request, Class<T> payLoadClass) throws IOException, Throwable {
-		String requestJSON = IOUtils.readContent(request.getInputStream());
+		String requestJSON = IOUtils.readPlainContent(request.getInputStream());
 		T payLoad = (T) JacksonUtils.convertFromJSON(requestJSON, payLoadClass);
 		return payLoad;
 	}
@@ -116,8 +110,7 @@ public class APIProvider extends HttpServlet {
 
 		chainDependency(resource, requestPayLoad, dataProcessor);
 
-		Object responseData = dataProcessor.processRequest(requestPayLoad, null);
-		responseData = dataProcessor.processResponse(responseData, requestPayLoad, new HashMap(), null);
+		Object responseData = dataProcessor.process(requestPayLoad, new HashMap());
 
 		return responseData;
 	}
@@ -136,23 +129,5 @@ public class APIProvider extends HttpServlet {
 		}
 
 	}
-	// protected List<Map<String, String>> executeStmt(Type type, String query)
-	// throws Throwable {
-	// return executeStmt(type, query, new HashMap());
-	// }
-	//
-	// protected List<Map<String, String>> executeStmt(Type type, String query,
-	// Map payLoad) throws Throwable {
-	//
-	// JDBCInfo jdbcInfo = new JDBCInfo();
-	// jdbcInfo.setType(type);
-	// jdbcInfo.setStmt(query);
-	// jdbcInfo.setPayLoad(payLoad);
-	// JDBCResponsePayLoad result = (JDBCResponsePayLoad)
-	// sendDataRequest("JDBC", "service", jdbcInfo, new JDBCResponsePayLoad());
-	//
-	// List<Map<String, String>> rows = result.getRows();
-	// return rows;
-	// }
 
 }

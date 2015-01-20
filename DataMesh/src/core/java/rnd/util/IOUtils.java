@@ -1,8 +1,6 @@
 package rnd.util;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,37 +20,26 @@ public class IOUtils {
 			is = Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
 		}
 
-		if (is == null) {
-			File file = new File(fileName);
-			if (file.exists()) {
-				is = new FileInputStream(file);
-			}
-		}
-
-		if (is == null) {
-			throw new FileNotFoundException(fileName);
-		}
-
 		return is;
 	}
 
-	public static String readContent(String fileName) throws IOException {
-		return readContent(fileName, true);
+	public static String readPlainContent(String fileName) throws IOException {
+		return readPlainContent(fileName, true);
 	}
 
-	public static String readContent(String fileName, boolean appendNewLine) throws IOException {
-		return readContent(getResourceAsStream(fileName), true, appendNewLine);
+	public static String readPlainContent(String fileName, boolean appendNewLine) throws IOException {
+		return readPlainContent(getResourceAsStream(fileName), true, appendNewLine);
 	}
 
-	public static String readContent(InputStream is) throws IOException {
-		return readContent(is, false);
+	public static String readPlainContent(InputStream is) throws IOException {
+		return readPlainContent(is, false);
 	}
 
-	public static String readContent(InputStream is, boolean closeStream) throws IOException {
-		return readContent(is, closeStream, false);
+	public static String readPlainContent(InputStream is, boolean closeStream) throws IOException {
+		return readPlainContent(is, closeStream, false);
 	}
 
-	public static String readContent(InputStream is, boolean closeStream, boolean appendNewLine) throws IOException {
+	public static String readPlainContent(InputStream is, boolean closeStream, boolean appendNewLine) throws IOException {
 		StringBuilder content = new StringBuilder();
 		BufferedReader br = new BufferedReader(new InputStreamReader(is));
 		String line = null;
@@ -68,4 +55,13 @@ public class IOUtils {
 		return content.toString();
 	}
 
+	// public static FileInputStream getFileInputStream(String fileName) throws FileNotFoundException {
+	// // Check file eagerly
+	// File file = new File(fileName);
+	// if (file.exists()) {
+	// return new FileInputStream(file);
+	// } else {
+	// throw new FileNotFoundException(fileName);
+	// }
+	// }
 }

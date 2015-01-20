@@ -5,9 +5,11 @@ import java.io.Serializable;
 public class API implements Serializable {
 
 	private String version;
+	
 	private APIMethod method;
 
 	private String baseURL;
+	
 	private String resource = "";
 
 	public API() {

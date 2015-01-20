@@ -1,22 +1,20 @@
 package rnd.data.process;
 
+import java.util.Map;
+
 public abstract class AbstractDataProcessor<Rq, Rs> implements DataProcessor<Rq, Rs> {
 
-	private DataProcessor delegate;
+	private Map<Object, DataProcessor> delegates;
 
-	public void setDelegate(DataProcessor delegate) {
-		this.delegate = delegate;
+	public void setDelegates(Map<Object, DataProcessor> delegates) {
+		this.delegates = delegates;
 	}
 
-	public DataProcessor getDelegate() {
-		return delegate;
+	public DataProcessor getDelegate(Object type) {
+		return delegates.get(type);
 	}
 
-	public DataProcessorCallback getRequestProcessorCallback(Rq requestPayLoad) {
-		return null;
-	}
-
-	public DataProcessorCallback getResponseProcessorCallback(Rq requestPayLoad, Rs responsePayLoad) {
+	public DataProcessorCallback getProcessorCallback(Rq requestPayLoad, Rs responsePayLoad) {
 		return null;
 	}
 

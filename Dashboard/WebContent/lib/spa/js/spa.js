@@ -1,40 +1,41 @@
-//
-var app = angular.module('spa', [ 'ngRoute', 'ngResource', 'ui' ]).config(
-		[ '$resourceProvider', '$locationProvider', '$routeProvider',
-				function($resourceProvider, $locationProvider, $routeProvider) {
+'use strict';
 
-					// $locationProvider.html5Mode(true);
+var app = angular.module('spa', [ 'ngRoute', 'ngResource', 'ui' ]).//
+config([ '$resourceProvider', '$locationProvider', '$routeProvider',//
+function($resourceProvider, $locationProvider, $routeProvider) {
 
-					$routeProvider.
+	// $locationProvider.html5Mode(true);
 
-					when('/home', {
-						templateUrl : 'lib/spa/template/home.html',
-						controller : 'HomeCtrl'
-					}).//
+	$routeProvider.
 
-					when('/subscribe', {
-						templateUrl : 'app/template/subscribe/subscriber.html',
-						controller : 'SubscribeCtrl'
-					}).//
+	when('/home', {
+		templateUrl : 'lib/spa/template/home.html',
+		controller : 'HomeCtrl'
+	}).//
 
-					when('/publish', {
-						templateUrl : 'app/template/publish/publisher.html',
-						controller : 'PublishCtrl'
-					}).//
+	when('/subscribe', {
+		templateUrl : 'app/template/subscribe/subscriber.html',
+		controller : 'SubscribeCtrl'
+	}).//
 
-					when('/visualize', {
-						templateUrl : 'app/template/visualize/dashboard.html',
-						controller : 'DashboardCtrl'
-					}).//
+	when('/publish', {
+		templateUrl : 'app/template/publish/publisher.html',
+		controller : 'PublishCtrl'
+	}).//
 
-					when('/about', {
-						templateUrl : 'lib/spa/template/about.html',
-						controller : function() {
-						}
-					}).
+	when('/visualize', {
+		templateUrl : 'app/template/visualize/dashboard.html',
+		controller : 'DashboardCtrl'
+	}).//
 
-					otherwise({
-						redirectTo : '/home'
-					});
+	when('/about', {
+		templateUrl : 'lib/spa/template/about.html',
+		controller : function() {
+		}
+	}).
 
-				} ]);
+	otherwise({
+		redirectTo : '/home'
+	});
+
+} ]);

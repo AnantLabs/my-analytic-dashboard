@@ -1,0 +1,54 @@
+<form>
+
+	Source Type:
+	<!--  -->
+	<select id="type" ng-model="dashboard.datasource_type">
+
+		<option></option>
+		<optgroup label="Local">
+			<option>File</option>
+		</optgroup>
+		<optgroup label="Remote">
+			<option>HTTP</option>
+			<option>FTP</option>
+		</optgroup>
+		<optgroup label="Datastore">
+			<option>SQL</option>
+			<option>NoSQL</option>
+		</optgroup>
+		<optgroup label="Apps">
+			<option>SAP</option>
+		</optgroup>
+	</select>
+
+	<!--  -->
+	<input id="name" type="text" ng-model="dashboard.datasource_name">
+
+	<!--  -->
+	<input id="param0" type="text" ng-model="dashboard.datasource_param0">
+
+	<!--  -->
+	<input id="param1" type="text" ng-model="dashboard.datasource_param1">
+
+	<!--  -->
+	<input type="button" value="Integrate" ng-click="doIntegrate()">
+
+</form>
+
+
+
+<table class="table">
+
+	<tr>
+		<th>Type</th>
+		<th>Name</th>
+		<th></th>
+	</tr>
+
+	<tr ng-repeat="datasource in dashboard.datasources">
+		<td>{{datasource.type}}</td>
+		<td>{{datasource.name}}</td>
+		<td></td>
+	</tr>
+
+</table>
