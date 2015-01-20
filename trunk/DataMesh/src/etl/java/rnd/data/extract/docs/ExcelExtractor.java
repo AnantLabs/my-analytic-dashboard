@@ -12,16 +12,14 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import rnd.data.process.AbstractDataProcessor;
-import rnd.util.IOUtils;
 
 @SuppressWarnings("unchecked")
 public class ExcelExtractor extends AbstractDataProcessor<Map, Map> {
 
 	@Override
-	public Object processRequest(Map requestPayLoad, DataProcessorCallback callback) throws Throwable {
+	public Object process(Map requestPayLoad, Map responsePayLoad) throws Throwable {
 
-		InputStream is = IOUtils.getResourceAsStream("/Sample/" + requestPayLoad.get("extract:param6") + ".xls");
-		//InputStream is = IOUtils.getResourceAsStream("E:/Vinod/MyLab/MyDashboard/Sample/" + requestPayLoad.get("extract:param5") + ".xls");
+		InputStream is = (InputStream) getDelegate().process(requestPayLoad, responsePayLoad);
 
 		HSSFWorkbook wb = new HSSFWorkbook(is);
 		HSSFSheet sheet = wb.getSheetAt(0);
@@ -39,11 +37,6 @@ public class ExcelExtractor extends AbstractDataProcessor<Map, Map> {
 		}
 		responseData.put("data", data);
 
-		return responseData;
-	}
-
-	@Override
-	public Object processResponse(Object responseData, Map requestPayLoad, Map responsePayLoad, DataProcessorCallback callback) throws Throwable {
 		return responseData;
 	}
 

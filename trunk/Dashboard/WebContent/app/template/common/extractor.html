@@ -4,11 +4,15 @@
 	<!--  -->
 	<select id="exec" ng-model="dashboard.datasource">
 		<option></option>
+		<option ng-repeat="datasource in dashboard.datasources">{{datasource.name}}</option>
+		<!-- 
 		<option>Brijash</option>
 		<option>Dinesh</option>
 		<option>Rajiv</option>
 		<option>Sameer</option>
+		1`	-->
 	</select>
+	
 	<!--  -->
 	<input type="button" value="Extract" ng-click="doExtract()">
 

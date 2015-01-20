@@ -1,6 +1,18 @@
 app.factory('Subscriber', function($rootScope, $resource) {
 
-	this.extract = function(datasource) {
+	this.doIntegrate = function(datasource) {
+
+		$resource($rootScope.API_BASE_URL + //
+		'/subscribe/integrate/' + //
+		datasource.type + '/' + datasource.name).//
+		get(function(response) {
+			$rootScope.dashboard.datasource = response.data;
+			$rootScope.dashboard.datasources.push(response.data);
+		});
+
+	};
+
+	this.doExtract = function(datasource) {
 
 		$resource($rootScope.API_BASE_URL + //
 		'/subscribe/extract/' + datasource).//
@@ -17,7 +29,7 @@ app.factory('Subscriber', function($rootScope, $resource) {
 
 app.factory('Publisher', function($rootScope, $resource) {
 
-	this.analyze = function(key, value) {
+	this.doAnalyze = function(key, value) {
 
 		$resource($rootScope.API_BASE_URL + //
 		'/publish/analyze/' + key + '/' + value).//
@@ -34,19 +46,17 @@ app.factory('Publisher', function($rootScope, $resource) {
 
 app.factory('Dashboard', function($rootScope, $resource) {
 
-	this.getMetadata = function(dashboardId, $scope) {
-
-		$resource('app/config/dashboard.json').get(function(response) {
-
-			$rootScope.dashboard = response.dashboard;
-
-		});
-
-	};
-
-	this.getData = function() {
-	};
-
+	/*
+	 * this.getMetadata = function(dashboardId, $scope) {
+	 * 
+	 * $resource('app/config/dashboard.json').get(function(response) {
+	 * 
+	 * $rootScope.dashboard = response.dashboard;
+	 * 
+	 * }); };
+	 * 
+	 * this.getData = function() { };
+	 */
 	return this;
 
 });

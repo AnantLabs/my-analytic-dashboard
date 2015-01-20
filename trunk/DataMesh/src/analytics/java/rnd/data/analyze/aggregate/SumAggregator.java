@@ -5,22 +5,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("unchecked")
 public class SumAggregator extends Aggregator {
 
 	@Override
-	public Object processRequest(Map<String, String> aggregateInfo, DataProcessorCallback callback) throws Throwable {
-		return getDelegate().processRequest(aggregateInfo, null);
-	}
+	public Object process(Map<String, String> aggregateInfo, Map<String, Number> aggrData) throws Throwable {
 
-	@Override
-	public Object processResponse(Object responseData, Map<String, String> aggregateInfo, Map<String, Number> aggrResponseData, DataProcessorCallback callback) throws Throwable {
+		String key = aggregateInfo.get("analyze:param0");
+		String value = aggregateInfo.get("analyze:param1");
 
-		String key = aggregateInfo.get("analyze:param6");
-		String value = aggregateInfo.get("analyze:param7");
+		Map processedData = (Map) getDelegate().process(aggregateInfo, new HashMap());
 
-		List headers = (List) ((Map) responseData).get("headers");
-		List<List> data = (List<List>) ((Map) responseData).get("data");
+		List headers = (List) processedData.get("headers");
+		List<List> data = (List<List>) processedData.get("data");
 
 		int keyIndx = headers.indexOf(key);
 		int valIndx = headers.indexOf(value);
@@ -30,22 +26,22 @@ public class SumAggregator extends Aggregator {
 			String keyClmn = columnValues.get(keyIndx).toString();
 			Number valClmn = (Number) columnValues.get(valIndx);
 
-			Number aggrValue = aggrResponseData.get(keyClmn);
+			Number aggrValue = aggrData.get(keyClmn);
 			if (aggrValue == null) {
 				aggrValue = new Double(0);
 			}
 
 			aggrValue = aggrValue.doubleValue() + valClmn.doubleValue();
 
-			aggrResponseData.put(keyClmn, aggrValue);
+			aggrData.put(keyClmn, aggrValue);
 		}
 
-		Map<String, Collection> actualResponseData = new HashMap<>();
+		Map<String, Collection> newProcessedData = new HashMap<>();
 
-		actualResponseData.put("keys", aggrResponseData.keySet());
-		actualResponseData.put("values", aggrResponseData.values());
+		newProcessedData.put("keys", aggrData.keySet());
+		newProcessedData.put("values", aggrData.values());
 
-		return actualResponseData;
+		return newProcessedData;
 
 	}
 

@@ -42,8 +42,8 @@ public class APIStateManager {
 	}
 
 	private static String extractTxStateKey() {
-		String transactionType = getRequest().getParameter("TransactionType");
-		String transactionID = getRequest().getParameter("TransactionID");
+		String transactionType = getRequest().getHeader("TransactionType");
+		String transactionID = getRequest().getHeader("TransactionID");
 		String txStateKey = transactionType + ":" + transactionID;
 		return txStateKey;
 	}
