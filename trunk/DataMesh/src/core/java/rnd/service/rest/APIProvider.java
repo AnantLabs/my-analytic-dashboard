@@ -110,7 +110,7 @@ public class APIProvider extends HttpServlet {
 
 		chainDependency(resource, requestPayLoad, dataProcessor);
 
-		Object responseData = dataProcessor.process(requestPayLoad, new HashMap());
+		Object responseData = dataProcessor.process(requestPayLoad);
 
 		return responseData;
 	}

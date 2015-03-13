@@ -10,8 +10,8 @@ public interface DataProcessor<Rq, Rs> {
 		void processCallback(DataProcessorCallbackContext context);
 	}
 
-	DataProcessorCallback getProcessorCallback(Rq requestPayLoad, Rs responsePayLoad);
+	DataProcessorCallback getProcessorCallback(Rq requestPayLoad);
 
-	Object process(Rq requestPayLoad, Rs responsePayLoad) throws Throwable;
+	Rs process(Rq rqPayload) throws Throwable;
 
 }

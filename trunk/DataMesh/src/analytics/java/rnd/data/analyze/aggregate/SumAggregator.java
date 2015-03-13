@@ -8,18 +8,20 @@ import java.util.Map;
 public class SumAggregator extends Aggregator {
 
 	@Override
-	public Object process(Map<String, String> aggregateInfo, Map<String, Number> aggrData) throws Throwable {
+	public Map<String, Collection> process(Map<String, String> aggregateInfo) throws Throwable {
 
 		String key = aggregateInfo.get("analyze:param0");
 		String value = aggregateInfo.get("analyze:param1");
 
-		Map processedData = (Map) getDelegate().process(aggregateInfo, new HashMap());
+		Map extractedData = (Map) getDelegate().process(aggregateInfo);
 
-		List headers = (List) processedData.get("headers");
-		List<List> data = (List<List>) processedData.get("data");
+		List headers = (List) extractedData.get("headers");
+		List<List> data = (List<List>) extractedData.get("data");
 
 		int keyIndx = headers.indexOf(key);
 		int valIndx = headers.indexOf(value);
+
+		Map<String, Number> aggrData = new HashMap<String, Number>();
 
 		for (List columnValues : data) {
 

@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+jarsExcludedFromWebInfLib=
 lastWarOutDir=E\:/Vinod/MyLab/MyDashboard/trunk/DataMesh/WebContent
 warSrcDir=WebContent
 warSrcDirIsOutput=false
