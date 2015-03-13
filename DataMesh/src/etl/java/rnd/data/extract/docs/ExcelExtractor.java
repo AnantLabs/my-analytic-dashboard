@@ -17,9 +17,9 @@ import rnd.data.process.AbstractDataProcessor;
 public class ExcelExtractor extends AbstractDataProcessor<Map, Map> {
 
 	@Override
-	public Object process(Map requestPayLoad, Map responsePayLoad) throws Throwable {
+	public Map process(Map requestPayLoad) throws Throwable {
 
-		InputStream is = (InputStream) getDelegate().process(requestPayLoad, responsePayLoad);
+		InputStream is = (InputStream) getDelegate().process(requestPayLoad);
 
 		HSSFWorkbook wb = new HSSFWorkbook(is);
 		HSSFSheet sheet = wb.getSheetAt(0);

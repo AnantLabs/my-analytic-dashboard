@@ -14,9 +14,9 @@ public class JDBCExtractor extends AbstractDataProcessor<Map, Map> {
 	private static JDBCDataAccessObject dao = new JDBCDataAccessObject();
 
 	@Override
-	public Object process(Map requestPayLoad, Map responsePayLoad) throws Throwable {
+	public Map process(Map requestPayLoad) throws Throwable {
 
-		Connection conn = (Connection) getDelegate().process(requestPayLoad, responsePayLoad);
+		Connection conn = (Connection) getDelegate().process(requestPayLoad);
 
 		String sql = (String) requestPayLoad.get("sql");
 		Object[] params = (Object[]) requestPayLoad.get("params");
